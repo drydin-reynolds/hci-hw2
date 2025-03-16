@@ -122,8 +122,11 @@
                             <div class="tab" data-category="saved"><i class="fas fa-bookmark"></i> Saved</div>
                         </div>
                         <div class="flex gap-md">
-                            <button class="btn btn-outline btn-sm">
+                            <button class="btn btn-outline btn-sm" id="filter-button">
                                 <i class="fas fa-filter"></i> Filter
+                            </button>
+                            <button class="help-icon" id="news-help-button" title="News Help">
+                                <i class="fas fa-question-circle"></i>
                             </button>
                         </div>
                     </div>
@@ -543,6 +546,151 @@
                     <a href="#" class="btn btn-sm btn-outline">View Full Calendar</a>
                 </div>
             </section>
+        </div>
+    </div>
+    
+    <!-- Filter Modal -->
+    <div class="modal-overlay" id="filter-modal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Advanced News Filter</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="filter-section">
+                    <h4>Date Range</h4>
+                    <div class="grid grid-cols-2 gap-md">
+                        <div class="form-group">
+                            <label for="date-from" class="form-label">From</label>
+                            <input type="date" id="date-from" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="date-to" class="form-label">To</label>
+                            <input type="date" id="date-to" class="form-input">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <h4>Categories</h4>
+                    <div class="grid grid-cols-3 gap-md">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="cat-company" checked>
+                            <label for="cat-company">Company News</label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="cat-market" checked>
+                            <label for="cat-market">Market Analysis</label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="cat-economy" checked>
+                            <label for="cat-economy">Economic News</label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="cat-global" checked>
+                            <label for="cat-global">Global News</label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="cat-crypto" checked>
+                            <label for="cat-crypto">Cryptocurrency</label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="cat-stocks" checked>
+                            <label for="cat-stocks">Stocks</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <h4>Sources</h4>
+                    <div class="grid grid-cols-3 gap-md">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="source-business" checked>
+                            <label for="source-business">Business Insider</label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="source-market" checked>
+                            <label for="source-market">Market Watch</label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="source-crypto" checked>
+                            <label for="source-crypto">Crypto Daily</label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="source-financial" checked>
+                            <label for="source-financial">Financial Times</label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="source-energy" checked>
+                            <label for="source-energy">Energy Report</label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="source-tech" checked>
+                            <label for="source-tech">Tech Today</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <h4>Keywords</h4>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Enter keywords separated by commas">
+                    </div>
+                    <div class="flex gap-sm flex-wrap mt-sm">
+                        <div class="keyword-pill">Bitcoin <i class="fas fa-times-circle"></i></div>
+                        <div class="keyword-pill">Tesla <i class="fas fa-times-circle"></i></div>
+                        <div class="keyword-pill">Interest Rate <i class="fas fa-times-circle"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="filter-reset">Reset Filters</button>
+                <button class="btn btn-primary" id="filter-apply">Apply Filters</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- News Help Modal -->
+    <div class="modal-overlay" id="news-help-modal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Market News Help</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="help-section">
+                    <h4>Finding News</h4>
+                    <ul>
+                        <li><strong>Categories:</strong> Use the tabs at the top to filter news by category.</li>
+                        <li><strong>Search:</strong> Use the search bar to find specific articles by keyword.</li>
+                        <li><strong>Advanced Filters:</strong> Click the Filter button to access advanced filtering options, including date ranges and sources.</li>
+                        <li><strong>Saved Articles:</strong> Click the bookmark icon on any article to save it for later viewing.</li>
+                    </ul>
+                </div>
+                
+                <div class="help-section">
+                    <h4>Using the Calendar</h4>
+                    <p>The market events calendar shows upcoming financial events:</p>
+                    <ul>
+                        <li><strong>Earnings Reports:</strong> Displayed in green, showing when companies will release financial results.</li>
+                        <li><strong>Economic Events:</strong> Displayed in blue, showing government reports and central bank decisions.</li>
+                        <li><strong>Dividends:</strong> Displayed in orange, showing when stocks will issue dividend payments.</li>
+                    </ul>
+                </div>
+                
+                <div class="help-section">
+                    <h4>Advanced Filtering Tips</h4>
+                    <ul>
+                        <li><strong>Date Range:</strong> Filter news from specific time periods using the date selectors.</li>
+                        <li><strong>Multiple Categories:</strong> Select multiple categories to see a broader range of news.</li>
+                        <li><strong>Keyword Filtering:</strong> Enter specific terms to narrow down results to topics you're interested in.</li>
+                        <li><strong>Source Filtering:</strong> Select or deselect news sources to customize your news feed.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="news-help-close">Got it</button>
+            </div>
         </div>
     </div>
     

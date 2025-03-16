@@ -54,35 +54,35 @@
                     </ul>
                 </div>
                 
-                <div class="nav-section">
-                    <div class="nav-section-title">Account</div>
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <span class="nav-icon"><i class="fas fa-wallet"></i></span>
-                                Deposit/Withdraw
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <span class="nav-icon"><i class="fas fa-history"></i></span>
-                                Transaction History
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <span class="nav-icon"><i class="fas fa-cog"></i></span>
-                                Settings
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <span class="nav-icon help-btn">?</span>
-                                Help
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="nav-section">
+                <div class="nav-section-title">Account</div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-wallet"></i></span>
+                            Deposit/Withdraw
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-history"></i></span>
+                            Transaction History
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                            Settings
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" id="main-help-button">
+                            <span class="nav-icon help-btn">?</span>
+                            Help
+                        </a>
+                    </li>
+                </ul>
+            </div>
             </div>
             
             <div class="user-profile">
@@ -103,9 +103,12 @@
                     <p class="text-muted">Place buy and sell orders</p>
                 </div>
                 <div class="flex gap-md items-center">
+                    <button class="help-icon" id="trade-help-button" title="Trading Help">
+                        <i class="fas fa-question-circle"></i>
+                    </button>
                     <div class="text-right">
                         <div class="text-primary">Available Cash</div>
-                        <div class="text-muted">$4,133.51</div>
+                        <div class="text-muted" id="available-cash">$4,133.51</div>
                     </div>
                 </div>
             </header>
@@ -490,6 +493,71 @@
         </div>
     </div>
     
+    <!-- Error Modal -->
+    <div class="modal-overlay" id="error-modal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Transaction Error</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-error">
+                    <p id="error-message">There was an error processing your transaction.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="error-ok">OK</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Help Modal -->
+    <div class="modal-overlay" id="help-modal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Trading Help</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="help-section">
+                    <h4>How to Place a Trade</h4>
+                    <ol>
+                        <li><strong>Select Buy or Sell:</strong> Choose whether you want to buy or sell an asset.</li>
+                        <li><strong>Choose an Asset:</strong> Select the asset you want to trade from the dropdown menu.</li>
+                        <li><strong>Select Order Type:</strong> Choose between Market, Limit, or Stop orders.</li>
+                        <li><strong>Enter Quantity:</strong> Specify how much of the asset you want to trade. Use the MAX button to use your full available balance for buying.</li>
+                        <li><strong>Review Order Details:</strong> Check the total cost, fees, and price impact.</li>
+                        <li><strong>Add Notes (Optional):</strong> Add any notes about your trade for future reference.</li>
+                        <li><strong>Submit Order:</strong> Click the Buy or Sell button to submit your order.</li>
+                        <li><strong>Confirm Order:</strong> Review the order details in the confirmation screen and click Confirm.</li>
+                    </ol>
+                </div>
+                
+                <div class="help-section">
+                    <h4>Understanding Order Types</h4>
+                    <ul>
+                        <li><strong>Market Order:</strong> Executed immediately at the current market price.</li>
+                        <li><strong>Limit Order:</strong> Executed only at a specified price or better.</li>
+                        <li><strong>Stop Order:</strong> Becomes a market order when the asset reaches a specified price.</li>
+                    </ul>
+                </div>
+                
+                <div class="help-section">
+                    <h4>Trading Limits</h4>
+                    <ul>
+                        <li>You cannot sell more assets than you currently own.</li>
+                        <li>Buy orders cannot exceed your available balance.</li>
+                        <li>Market orders may experience price slippage during execution.</li>
+                        <li>A 0.1% fee is applied to all transactions.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="help-close">Got it</button>
+            </div>
+        </div>
+    </div>
+    
     <!-- Success Modal -->
     <div class="modal-overlay" id="success-modal" style="display: none;">
         <div class="modal">
@@ -539,6 +607,48 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Portfolio data for validation (for demo purposes)
+            const portfolioData = {
+                'BTC': { quantity: 0.5, avgPrice: 35600 },
+                'ETH': { quantity: 2.5, avgPrice: 2400 },
+                'AAPL': { quantity: 10, avgPrice: 175.50 },
+                'TSLA': { quantity: 5, avgPrice: 240.25 },
+                'GLD': { quantity: 2, avgPrice: 1950.75 }
+            };
+            
+            // Help system setup
+            const mainHelpButton = document.getElementById('main-help-button');
+            const tradeHelpButton = document.getElementById('trade-help-button');
+            const helpModal = document.getElementById('help-modal');
+            const helpCloseBtn = document.getElementById('help-close');
+            const errorModal = document.getElementById('error-modal');
+            const errorOkBtn = document.getElementById('error-ok');
+            
+            // Help buttons event listeners
+            mainHelpButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                helpModal.style.display = 'flex';
+            });
+            
+            tradeHelpButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                helpModal.style.display = 'flex';
+            });
+            
+            helpCloseBtn.addEventListener('click', function() {
+                helpModal.style.display = 'none';
+            });
+            
+            errorOkBtn.addEventListener('click', function() {
+                errorModal.style.display = 'none';
+            });
+            
+            // Function to show error message
+            function showError(message) {
+                document.getElementById('error-message').textContent = message;
+                errorModal.style.display = 'flex';
+            }
+            
             // Chart data for Bitcoin (default asset)
             const chartCtx = document.getElementById('asset-chart').getContext('2d');
             const daysInMonth = 30;
@@ -788,15 +898,33 @@
                 const total = parseFloat(totalEl.textContent.replace(/[^0-9.-]+/g, ''));
                 const fee = parseFloat(feeEl.textContent.replace(/[^0-9.-]+/g, ''));
                 const isBuy = buyTab.classList.contains('active');
+                const availableCash = parseFloat(document.getElementById('available-cash').textContent.replace(/[^0-9.-]+/g, ''));
                 
                 // Validate
                 if (quantity <= 0) {
-                    alert('Please enter a valid quantity.');
+                    showError('Please enter a valid quantity.');
                     return;
                 }
                 
+                // Validate based on transaction type (buy/sell)
+                if (isBuy) {
+                    // Validate buy - Check if user has enough cash
+                    if (total > availableCash) {
+                        showError(`Insufficient funds. Your available balance ($${availableCash.toFixed(2)}) is less than the total cost ($${total.toFixed(2)}).`);
+                        return;
+                    }
+                } else {
+                    // Validate sell - Check if user has enough of the asset
+                    const assetInPortfolio = portfolioData[assetSymbol];
+                    if (!assetInPortfolio || assetInPortfolio.quantity < quantity) {
+                        const ownedQty = assetInPortfolio ? assetInPortfolio.quantity : 0;
+                        showError(`Insufficient ${assetSymbol} balance. You own ${ownedQty} ${assetSymbol}, but are attempting to sell ${quantity} ${assetSymbol}.`);
+                        return;
+                    }
+                }
+                
                 // Update confirmation modal
-                document.getElementById('confirm-order-type').textContent = `${orderType.charAt(0).toUpperCase() + orderType.slice(1)} ${isBy ? 'Buy' : 'Sell'}`;
+                document.getElementById('confirm-order-type').textContent = `${orderType.charAt(0).toUpperCase() + orderType.slice(1)} ${isBuy ? 'Buy' : 'Sell'}`;
                 document.getElementById('confirm-asset').textContent = `${assetName} (${assetSymbol})`;
                 document.getElementById('confirm-quantity').textContent = quantity;
                 document.getElementById('confirm-price').textContent = price.toLocaleString('en-US', {
@@ -845,9 +973,9 @@
                 document.getElementById('success-total').textContent = document.getElementById('confirm-total').textContent;
                 
                 // Set success title based on order type
-                const isBy = buyTab.classList.contains('active');
-                document.getElementById('success-title').textContent = `${isBy ? 'Purchase' : 'Sale'} Successful!`;
-                document.getElementById('success-description').textContent = `Your ${isBy ? 'purchase of' : 'sale of'} ${document.getElementById('confirm-asset').textContent} has been processed.`;
+                const isBuyOrder = buyTab.classList.contains('active');
+                document.getElementById('success-title').textContent = `${isBuyOrder ? 'Purchase' : 'Sale'} Successful!`;
+                document.getElementById('success-description').textContent = `Your ${isBuyOrder ? 'purchase of' : 'sale of'} ${document.getElementById('confirm-asset').textContent} has been processed.`;
                 
                 // Show success modal
                 successModal.style.display = 'flex';
