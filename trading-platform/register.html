@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeX - Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">TradeX</div>
+                <h2 class="auth-title">Create Account</h2>
+                <p class="auth-subtitle">Fill in the details to get started</p>
+            </div>
+
+            <div class="verification-steps">
+                <div class="verification-step active">
+                    <div class="step-number">1</div>
+                    <div class="step-text">Account</div>
+                </div>
+                <div class="verification-step">
+                    <div class="step-number">2</div>
+                    <div class="step-text">Verification</div>
+                </div>
+                <div class="verification-step">
+                    <div class="step-number">3</div>
+                    <div class="step-text">Setup 2FA</div>
+                </div>
+            </div>
+
+            <form class="auth-form" id="register-form">
+                <div class="form-group">
+                    <label for="fullname" class="form-label">Full Name</label>
+                    <input type="text" id="fullname" class="form-input" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" class="form-input" placeholder="Enter your email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" class="form-input" placeholder="Choose a username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" class="form-input" placeholder="Create a password" required>
+                    
+                    <div class="password-strength">
+                        <div class="strength-meter">
+                            <div class="strength-meter-fill" style="width: 0%; background-color: #EF4444;"></div>
+                        </div>
+                        <div class="strength-text">
+                            <span>Password strength:</span>
+                            <span class="strength-label">Weak</span>
+                        </div>
+                    </div>
+                    
+                    <div class="password-requirements">
+                        <div class="requirement" id="req-length">
+                            <i class="fas fa-circle-xmark"></i>
+                            <span>At least 8 characters</span>
+                        </div>
+                        <div class="requirement" id="req-uppercase">
+                            <i class="fas fa-circle-xmark"></i>
+                            <span>At least 1 uppercase letter</span>
+                        </div>
+                        <div class="requirement" id="req-lowercase">
+                            <i class="fas fa-circle-xmark"></i>
+                            <span>At least 1 lowercase letter</span>
+                        </div>
+                        <div class="requirement" id="req-number">
+                            <i class="fas fa-circle-xmark"></i>
+                            <span>At least 1 number</span>
+                        </div>
+                        <div class="requirement" id="req-special">
+                            <i class="fas fa-circle-xmark"></i>
+                            <span>At least 1 special character</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password" class="form-label">Confirm Password</label>
+                    <input type="password" id="confirm-password" class="form-input" placeholder="Confirm your password" required>
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-full">Create Account</button>
+            </form>
+
+            <div class="auth-footer">
+                Already have an account? <a href="index.html">Log in</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal (hidden by default) -->
+    <div class="modal-overlay" id="error-modal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Registration Error</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-error">
+                    <p id="error-message">Please fix the errors in the form.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="error-ok">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Verification Modal (hidden by default) -->
+    <div class="modal-overlay" id="verification-modal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Email Verification</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>We've sent a verification code to your email. Please check your inbox and enter the code below.</p>
+                
+                <div class="tfa-code-container">
+                    <input type="text" class="tfa-code-input verification-code" maxlength="1" autofocus>
+                    <input type="text" class="tfa-code-input verification-code" maxlength="1">
+                    <input type="text" class="tfa-code-input verification-code" maxlength="1">
+                    <input type="text" class="tfa-code-input verification-code" maxlength="1">
+                    <input type="text" class="tfa-code-input verification-code" maxlength="1">
+                    <input type="text" class="tfa-code-input verification-code" maxlength="1">
+                </div>
+                
+                <div class="tfa-info">
+                    <span>Code expires in: </span>
+                    <span class="tfa-timer">10:00</span>
+                    <span class="tfa-resend">Resend code</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="verification-cancel">Cancel</button>
+                <button class="btn btn-primary" id="verification-verify">Verify</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2FA Setup Modal (hidden by default) -->
+    <div class="modal-overlay" id="setup-2fa-modal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Setup Two-Factor Authentication</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Secure your account with two-factor authentication (2FA).</p>
+                
+                <div class="text-center mb-md">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=otpauth://totp/TradeX:demo@tradex.com%3Fsecret=JBSWY3DPEHPK3PXP%26issuer=TradeX" alt="QR Code" class="mb-sm">
+                    <p>Scan this QR code with an authenticator app like Google Authenticator or Authy.</p>
+                    <p class="text-muted">Or enter this code manually: JBSWY3DPEHPK3PXP</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tfa-verify-code" class="form-label">Enter the 6-digit code from your app</label>
+                    <input type="text" id="tfa-verify-code" class="form-input" placeholder="000000" maxlength="6">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="setup-tfa-skip">Skip for now</button>
+                <button class="btn btn-primary" id="setup-tfa-confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal (hidden by default) -->
+    <div class="modal-overlay" id="success-modal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Registration Successful</h3>
+            </div>
+            <div class="modal-body text-center">
+                <div class="success-checkmark">
+                    <div class="check-icon">
+                        <span class="icon-line line-tip"></span>
+                        <span class="icon-line line-long"></span>
+                        <div class="icon-circle"></div>
+                        <div class="icon-fix"></div>
+                    </div>
+                </div>
+                <h4>Welcome to TradeX!</h4>
+                <p>Your account has been created successfully. You can now start trading.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary w-full" id="success-continue">Continue to Dashboard</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const registerForm = document.getElementById('register-form');
+            const errorModal = document.getElementById('error-modal');
+            const verificationModal = document.getElementById('verification-modal');
+            const setup2faModal = document.getElementById('setup-2fa-modal');
+            const successModal = document.getElementById('success-modal');
+            const modalCloseButtons = document.querySelectorAll('.modal-close');
+            const verificationInputs = document.querySelectorAll('.verification-code');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirm-password');
+            const steps = document.querySelectorAll('.verification-step');
+            
+            // Password strength meter
+            passwordInput.addEventListener('input', updatePasswordStrength);
+            
+            function updatePasswordStrength() {
+                const password = passwordInput.value;
+                let strength = 0;
+                let strengthLabel = '';
+                let strengthColor = '';
+                
+                // Update requirements
+                const hasLength = password.length >= 8;
+                const hasUppercase = /[A-Z]/.test(password);
+                const hasLowercase = /[a-z]/.test(password);
+                const hasNumber = /\d/.test(password);
+                const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+                
+                updateRequirement('req-length', hasLength);
+                updateRequirement('req-uppercase', hasUppercase);
+                updateRequirement('req-lowercase', hasLowercase);
+                updateRequirement('req-number', hasNumber);
+                updateRequirement('req-special', hasSpecial);
+                
+                // Calculate strength
+                if (hasLength) strength += 20;
+                if (hasUppercase) strength += 20;
+                if (hasLowercase) strength += 20;
+                if (hasNumber) strength += 20;
+                if (hasSpecial) strength += 20;
+                
+                // Set strength label and color
+                if (strength <= 20) {
+                    strengthLabel = 'Weak';
+                    strengthColor = '#EF4444'; // red
+                } else if (strength <= 60) {
+                    strengthLabel = 'Medium';
+                    strengthColor = '#F97316'; // orange
+                } else if (strength <= 80) {
+                    strengthLabel = 'Strong';
+                    strengthColor = '#10B981'; // green
+                } else {
+                    strengthLabel = 'Very Strong';
+                    strengthColor = '#10B981'; // green
+                }
+                
+                // Update UI
+                const strengthMeterFill = document.querySelector('.strength-meter-fill');
+                const strengthLabelElement = document.querySelector('.strength-label');
+                
+                strengthMeterFill.style.width = `${strength}%`;
+                strengthMeterFill.style.backgroundColor = strengthColor;
+                strengthLabelElement.textContent = strengthLabel;
+                strengthLabelElement.style.color = strengthColor;
+            }
+            
+            function updateRequirement(id, isMet) {
+                const requirement = document.getElementById(id);
+                const icon = requirement.querySelector('i');
+                
+                if (isMet) {
+                    requirement.classList.add('met');
+                    icon.className = 'fas fa-circle-check';
+                } else {
+                    requirement.classList.remove('met');
+                    icon.className = 'fas fa-circle-xmark';
+                }
+            }
+            
+            // Registration form submission
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                const fullname = document.getElementById('fullname').value;
+                const email = document.getElementById('email').value;
+                const username = document.getElementById('username').value;
+                const password = passwordInput.value;
+                const confirmPassword = confirmPasswordInput.value;
+                const termsAccepted = document.getElementById('terms').checked;
+                
+                // Simple validation
+                if (!fullname || !email || !username || !password) {
+                    showErrorModal('Please fill in all required fields.');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    showErrorModal('Passwords do not match.');
+                    return;
+                }
+                
+                if (!termsAccepted) {
+                    showErrorModal('You must accept the Terms of Service and Privacy Policy.');
+                    return;
+                }
+                
+                // Password strength validation
+                const hasLength = password.length >= 8;
+                const hasUppercase = /[A-Z]/.test(password);
+                const hasLowercase = /[a-z]/.test(password);
+                const hasNumber = /\d/.test(password);
+                const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+                
+                if (!hasLength || !hasUppercase || !hasLowercase || !hasNumber || !hasSpecial) {
+                    showErrorModal('Your password does not meet the requirements.');
+                    return;
+                }
+                
+                // For demo purposes, proceed to verification step
+                steps[0].classList.remove('active');
+                steps[0].classList.add('complete');
+                steps[1].classList.add('active');
+                
+                verificationModal.style.display = 'flex';
+            });
+            
+            // Verification code inputs
+            verificationInputs.forEach((input, index) => {
+                input.addEventListener('input', function() {
+                    if (input.value && index < verificationInputs.length - 1) {
+                        verificationInputs[index + 1].focus();
+                    }
+                });
+                
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Backspace' && !input.value && index > 0) {
+                        verificationInputs[index - 1].focus();
+                    }
+                });
+            });
+            
+            // Verification modal verify button
+            document.getElementById('verification-verify').addEventListener('click', function() {
+                let code = '';
+                verificationInputs.forEach(input => {
+                    code += input.value;
+                });
+                
+                // For demo, accept any 6-digit code
+                if (code.length === 6 && /^\d+$/.test(code)) {
+                    verificationModal.style.display = 'none';
+                    
+                    // Update steps and show 2FA setup
+                    steps[1].classList.remove('active');
+                    steps[1].classList.add('complete');
+                    steps[2].classList.add('active');
+                    
+                    setup2faModal.style.display = 'flex';
+                } else {
+                    showErrorModal('Invalid verification code. Please try again.');
+                }
+            });
+            
+            // 2FA setup buttons
+            document.getElementById('setup-tfa-confirm').addEventListener('click', function() {
+                const tfaCode = document.getElementById('tfa-verify-code').value;
+                
+                // For demo, accept any 6-digit code
+                if (tfaCode.length === 6 && /^\d+$/.test(tfaCode)) {
+                    setup2faModal.style.display = 'none';
+                    
+                    // Complete the final step
+                    steps[2].classList.remove('active');
+                    steps[2].classList.add('complete');
+                    
+                    // Show success modal
+                    successModal.style.display = 'flex';
+                } else {
+                    showErrorModal('Invalid 2FA code. Please try again.');
+                }
+            });
+            
+            document.getElementById('setup-tfa-skip').addEventListener('click', function() {
+                setup2faModal.style.display = 'none';
+                
+                // Complete the final step but as skipped
+                steps[2].classList.remove('active');
+                steps[2].classList.add('complete');
+                
+                // Show success modal
+                successModal.style.display = 'flex';
+            });
+            
+            // Success modal continue button
+            document.getElementById('success-continue').addEventListener('click', function() {
+                window.location.href = 'dashboard.html';
+            });
+            
+            // Close modals when clicking the X button
+            modalCloseButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    verificationModal.style.display = 'none';
+                    errorModal.style.display = 'none';
+                    setup2faModal.style.display = 'none';
+                });
+            });
+            
+            // Error modal OK button
+            document.getElementById('error-ok').addEventListener('click', function() {
+                errorModal.style.display = 'none';
+            });
+            
+            // Helper function to show error modal
+            function showErrorModal(message) {
+                document.getElementById('error-message').textContent = message;
+                errorModal.style.display = 'flex';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeX - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/components.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="main-content">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-nav">
+                <div class="navbar-brand text-center mb-lg">TradeX</div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Main</div>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="dashboard.html" class="nav-link active">
+                                <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="trade.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-exchange-alt"></i></span>
+                                Trade
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="portfolio.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-briefcase"></i></span>
+                                Portfolio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="news.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                                Market News
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="reports.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-file-alt"></i></span>
+                                Reports
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Account</div>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-wallet"></i></span>
+                                Deposit/Withdraw
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-history"></i></span>
+                                Transaction History
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                                Settings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon help-btn">?</span>
+                                Help
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="user-avatar">JD</div>
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Premium Account</div>
+                </div>
+                <a href="index.html" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="content-area">
+            <header class="navbar">
+                <div>
+                    <h1 class="mb-0">Dashboard</h1>
+                    <p class="text-muted">Welcome back, John!</p>
+                </div>
+                <div class="flex gap-md items-center">
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge badge-primary">3</span>
+                    </button>
+                    <div class="text-right">
+                        <div class="text-primary">Mar 15, 2025</div>
+                        <div class="text-muted">Market closes in 3h 45m</div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Account Summary -->
+            <section class="account-summary">
+                <div class="summary-card">
+                    <div class="summary-card-title">Total Balance</div>
+                    <div class="summary-card-value">$32,458.92</div>
+                    <div class="summary-card-change change-up">
+                        <span class="change-icon"><i class="fas fa-caret-up"></i></span>
+                        <span>+$2,145.30 (6.8%)</span>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-card-title">Portfolio Value</div>
+                    <div class="summary-card-value">$28,325.41</div>
+                    <div class="summary-card-change change-up">
+                        <span class="change-icon"><i class="fas fa-caret-up"></i></span>
+                        <span>+$1,954.12 (7.2%)</span>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-card-title">Available Cash</div>
+                    <div class="summary-card-value">$4,133.51</div>
+                    <div class="summary-card-change">
+                        <span>For trading</span>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-card-title">Today's P/L</div>
+                    <div class="summary-card-value">+$346.25</div>
+                    <div class="summary-card-change change-up">
+                        <span class="change-icon"><i class="fas fa-caret-up"></i></span>
+                        <span>+1.2% today</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <button class="action-btn action-buy">
+                    <div class="action-icon">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <span class="action-text">Buy</span>
+                </button>
+                
+                <button class="action-btn action-sell">
+                    <div class="action-icon">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <span class="action-text">Sell</span>
+                </button>
+                
+                <button class="action-btn">
+                    <div class="action-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <span class="action-text">Deposit</span>
+                </button>
+                
+                <button class="action-btn">
+                    <div class="action-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <span class="action-text">Withdraw</span>
+                </button>
+            </section>
+            
+            <!-- Market Overview -->
+            <section class="market-overview">
+                <div class="overview-header">
+                    <h2 class="overview-title">Market Overview</h2>
+                    <div class="overview-actions">
+                        <button class="btn btn-sm btn-outline">Refresh</button>
+                        <button class="btn btn-sm btn-outline">View All</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="table-container">
+                        <table class="market-table">
+                            <thead>
+                                <tr>
+                                    <th>Asset</th>
+                                    <th>Price</th>
+                                    <th>24h Change</th>
+                                    <th>Market Cap</th>
+                                    <th>24h Chart</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="asset-info">
+                                            <div class="asset-icon">
+                                                <i class="fab fa-bitcoin"></i>
+                                            </div>
+                                            <div>
+                                                <div class="asset-name">Bitcoin</div>
+                                                <div class="asset-symbol">BTC</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="price">$36,854.21</td>
+                                    <td class="price-change change-up">+4.52%</td>
+                                    <td>$698.5B</td>
+                                    <td>
+                                        <canvas class="sparkline" id="btc-chart"></canvas>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline">Trade</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="asset-info">
+                                            <div class="asset-icon">
+                                                <i class="fab fa-ethereum"></i>
+                                            </div>
+                                            <div>
+                                                <div class="asset-name">Ethereum</div>
+                                                <div class="asset-symbol">ETH</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="price">$2,481.15</td>
+                                    <td class="price-change change-up">+3.20%</td>
+                                    <td>$298.2B</td>
+                                    <td>
+                                        <canvas class="sparkline" id="eth-chart"></canvas>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline">Trade</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="asset-info">
+                                            <div class="asset-icon">
+                                                <i class="fas fa-apple-alt"></i>
+                                            </div>
+                                            <div>
+                                                <div class="asset-name">Apple Inc.</div>
+                                                <div class="asset-symbol">AAPL</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="price">$178.32</td>
+                                    <td class="price-change change-down">-0.87%</td>
+                                    <td>$2.9T</td>
+                                    <td>
+                                        <canvas class="sparkline" id="aapl-chart"></canvas>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline">Trade</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="asset-info">
+                                            <div class="asset-icon">
+                                                <i class="fas fa-car"></i>
+                                            </div>
+                                            <div>
+                                                <div class="asset-name">Tesla Inc.</div>
+                                                <div class="asset-symbol">TSLA</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="price">$245.78</td>
+                                    <td class="price-change change-up">+2.14%</td>
+                                    <td>$781.4B</td>
+                                    <td>
+                                        <canvas class="sparkline" id="tsla-chart"></canvas>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline">Trade</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="asset-info">
+                                            <div class="asset-icon">
+                                                <i class="fas fa-oil-can"></i>
+                                            </div>
+                                            <div>
+                                                <div class="asset-name">Gold</div>
+                                                <div class="asset-symbol">GLD</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="price">$1,982.57</td>
+                                    <td class="price-change change-down">-0.34%</td>
+                                    <td>—</td>
+                                    <td>
+                                        <canvas class="sparkline" id="gld-chart"></canvas>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline">Trade</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="grid grid-cols-2 gap-lg">
+                <!-- Recent Transactions -->
+                <section class="transactions">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Recent Transactions</h3>
+                            <a href="#" class="btn btn-sm btn-outline">View All</a>
+                        </div>
+                        <div class="card-content">
+                            <div class="transaction-item">
+                                <div class="transaction-icon transaction-buy">
+                                    <i class="fas fa-arrow-down"></i>
+                                </div>
+                                <div class="transaction-info">
+                                    <div class="transaction-title">Bought Bitcoin</div>
+                                    <div class="transaction-time">Today, 10:45 AM</div>
+                                </div>
+                                <div class="transaction-amount">+0.023 BTC</div>
+                            </div>
+                            <div class="transaction-item">
+                                <div class="transaction-icon transaction-sell">
+                                    <i class="fas fa-arrow-up"></i>
+                                </div>
+                                <div class="transaction-info">
+                                    <div class="transaction-title">Sold Ethereum</div>
+                                    <div class="transaction-time">Yesterday, 3:20 PM</div>
+                                </div>
+                                <div class="transaction-amount">-1.24 ETH</div>
+                            </div>
+                            <div class="transaction-item">
+                                <div class="transaction-icon transaction-buy">
+                                    <i class="fas fa-arrow-down"></i>
+                                </div>
+                                <div class="transaction-info">
+                                    <div class="transaction-title">Bought Tesla Inc.</div>
+                                    <div class="transaction-time">Mar 14, 2025</div>
+                                </div>
+                                <div class="transaction-amount">+5 TSLA</div>
+                            </div>
+                            <div class="transaction-item">
+                                <div class="transaction-icon transaction-buy">
+                                    <i class="fas fa-arrow-down"></i>
+                                </div>
+                                <div class="transaction-info">
+                                    <div class="transaction-title">Bought Apple Inc.</div>
+                                    <div class="transaction-time">Mar 13, 2025</div>
+                                </div>
+                                <div class="transaction-amount">+10 AAPL</div>
+                            </div>
+                            <div class="transaction-item">
+                                <div class="transaction-icon transaction-sell">
+                                    <i class="fas fa-arrow-up"></i>
+                                </div>
+                                <div class="transaction-info">
+                                    <div class="transaction-title">Sold Gold</div>
+                                    <div class="transaction-time">Mar 10, 2025</div>
+                                </div>
+                                <div class="transaction-amount">-1.5 GLD</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Watchlist -->
+                <section class="watchlist">
+                    <div class="watchlist-header">
+                        <h3 class="watchlist-title">My Watchlist</h3>
+                        <span class="watchlist-add">
+                            <i class="fas fa-plus"></i>
+                            Add Asset
+                        </span>
+                    </div>
+                    
+                    <div class="watchlist-item">
+                        <div class="watchlist-asset">
+                            <div class="asset-icon">
+                                <i class="fab fa-amazon"></i>
+                            </div>
+                            <div>
+                                <div class="asset-name">Amazon</div>
+                                <div class="asset-symbol">AMZN</div>
+                            </div>
+                        </div>
+                        <div class="watchlist-price">$3,145.32</div>
+                        <div class="watchlist-change change-up">+1.23%</div>
+                        <div class="watchlist-actions">
+                            <button class="btn btn-sm btn-success">Buy</button>
+                            <button class="btn btn-sm btn-outline">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="watchlist-item">
+                        <div class="watchlist-asset">
+                            <div class="asset-icon">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                            <div>
+                                <div class="asset-name">Microsoft</div>
+                                <div class="asset-symbol">MSFT</div>
+                            </div>
+                        </div>
+                        <div class="watchlist-price">$287.45</div>
+                        <div class="watchlist-change change-down">-0.78%</div>
+                        <div class="watchlist-actions">
+                            <button class="btn btn-sm btn-success">Buy</button>
+                            <button class="btn btn-sm btn-outline">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="watchlist-item">
+                        <div class="watchlist-asset">
+                            <div class="asset-icon">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div>
+                                <div class="asset-name">Nvidia</div>
+                                <div class="asset-symbol">NVDA</div>
+                            </div>
+                        </div>
+                        <div class="watchlist-price">$432.67</div>
+                        <div class="watchlist-change change-up">+3.42%</div>
+                        <div class="watchlist-actions">
+                            <button class="btn btn-sm btn-success">Buy</button>
+                            <button class="btn btn-sm btn-outline">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="watchlist-item">
+                        <div class="watchlist-asset">
+                            <div class="asset-icon">
+                                <i class="fas fa-gas-pump"></i>
+                            </div>
+                            <div>
+                                <div class="asset-name">Silver</div>
+                                <div class="asset-symbol">SLV</div>
+                            </div>
+                        </div>
+                        <div class="watchlist-price">$22.35</div>
+                        <div class="watchlist-change change-down">-0.15%</div>
+                        <div class="watchlist-actions">
+                            <button class="btn btn-sm btn-success">Buy</button>
+                            <button class="btn btn-sm btn-outline">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Performance Chart -->
+            <section class="performance-chart">
+                <div class="card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Portfolio Performance</h3>
+                        <div class="chart-period">
+                            <button class="period-btn">1D</button>
+                            <button class="period-btn">1W</button>
+                            <button class="period-btn active">1M</button>
+                            <button class="period-btn">3M</button>
+                            <button class="period-btn">1Y</button>
+                            <button class="period-btn">All</button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="portfolio-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Portfolio Allocation -->
+            <section class="portfolio-allocation">
+                <h3 class="allocation-title">Portfolio Allocation</h3>
+                <div class="allocation-chart">
+                    <div class="pie-chart">
+                        <canvas id="allocation-chart"></canvas>
+                    </div>
+                    <div class="allocation-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #1E3A8A;"></div>
+                            <div class="legend-label">Cryptocurrencies</div>
+                            <div class="legend-value">$12,845.32</div>
+                            <div class="legend-percent">45.3%</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #0D9488;"></div>
+                            <div class="legend-label">Stocks</div>
+                            <div class="legend-value">$9,624.71</div>
+                            <div class="legend-percent">34.0%</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #F97316;"></div>
+                            <div class="legend-label">Commodities</div>
+                            <div class="legend-value">$5,855.38</div>
+                            <div class="legend-percent">20.7%</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Market News Preview -->
+            <section class="market-news-preview">
+                <div class="overview-header">
+                    <h2 class="overview-title">Latest Market News</h2>
+                    <a href="news.html" class="btn btn-sm btn-outline">View All News</a>
+                </div>
+                <div class="news-container">
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80" alt="Crypto Market" class="news-image">
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-source">Crypto Daily</span>
+                                <span class="news-date">1 hour ago</span>
+                            </div>
+                            <h4 class="news-title">Bitcoin Surges Past $36,000 as Institutional Adoption Increases</h4>
+                            <p class="news-summary">The leading cryptocurrency has seen significant gains as more financial institutions announce crypto investment products.</p>
+                            <div class="news-footer">
+                                <div class="news-tags">
+                                    <span class="news-tag">Crypto</span>
+                                    <span class="news-tag">Bitcoin</span>
+                                </div>
+                                <div class="news-actions">
+                                    <span class="news-action"><i class="far fa-bookmark"></i></span>
+                                    <span class="news-action"><i class="far fa-share-square"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80" alt="Stock Market" class="news-image">
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-source">Market Watch</span>
+                                <span class="news-date">3 hours ago</span>
+                            </div>
+                            <h4 class="news-title">Fed Signals Potential Rate Cut in Next Meeting</h4>
+                            <p class="news-summary">The Federal Reserve has indicated it may consider lowering interest rates in its upcoming meeting, citing improving inflation data.</p>
+                            <div class="news-footer">
+                                <div class="news-tags">
+                                    <span class="news-tag">Economy</span>
+                                    <span class="news-tag">Fed</span>
+                                </div>
+                                <div class="news-actions">
+                                    <span class="news-action"><i class="far fa-bookmark"></i></span>
+                                    <span class="news-action"><i class="far fa-share-square"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80" alt="Corporate News" class="news-image">
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-source">Business Insider</span>
+                                <span class="news-date">Yesterday</span>
+                            </div>
+                            <h4 class="news-title">Tesla Announces New Battery Technology with 500-Mile Range</h4>
+                            <p class="news-summary">The electric vehicle maker has unveiled a revolutionary battery technology that could significantly increase range and reduce costs.</p>
+                            <div class="news-footer">
+                                <div class="news-tags">
+                                    <span class="news-tag">TSLA</span>
+                                    <span class="news-tag">Tech</span>
+                                </div>
+                                <div class="news-actions">
+                                    <span class="news-action"><i class="far fa-bookmark"></i></span>
+                                    <span class="news-action"><i class="far fa-share-square"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Portfolio Performance Chart
+            const portfolioCtx = document.getElementById('portfolio-chart').getContext('2d');
+            const portfolioChart = new Chart(portfolioCtx, {
+                type: 'line',
+                data: {
+                    labels: [...Array(30).keys()].map(i => {
+                        const date = new Date();
+                        date.setDate(date.getDate() - (30 - i - 1));
+                        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    }),
+                    datasets: [{
+                        label: 'Portfolio Value',
+                        data: [
+                            25400, 25600, 25300, 25450, 25700, 26100, 26300, 
+                            26150, 26400, 26750, 26900, 27050, 26800, 26900, 
+                            27200, 27400, 27350, 27100, 27250, 27500, 27300,
+                            27600, 27800, 28100, 27900, 28050, 28200, 28400, 
+                            28300, 28325
+                        ],
+                        borderColor: '#1E3A8A',
+                        backgroundColor: 'rgba(30, 58, 138, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return `$${context.raw.toLocaleString()}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                maxTicksLimit: 10
+                            }
+                        },
+                        y: {
+                            grid: {
+                                borderDash: [5, 5]
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Portfolio Allocation Chart
+            const allocationCtx = document.getElementById('allocation-chart').getContext('2d');
+            const allocationChart = new Chart(allocationCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Cryptocurrencies', 'Stocks', 'Commodities'],
+                    datasets: [{
+                        data: [45.3, 34, 20.7],
+                        backgroundColor: ['#1E3A8A', '#0D9488', '#F97316'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Sparkline charts for assets
+            const sparklineOptions = {
+                type: 'line',
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false
+                        },
+                        y: {
+                            display: false
+                        }
+                    },
+                    elements: {
+                        point: {
+                            radius: 0
+                        },
+                        line: {
+                            tension: 0.4,
+                            borderWidth: 1.5
+                        }
+                    }
+                }
+            };
+            
+            // BTC Chart
+            const btcCtx = document.getElementById('btc-chart').getContext('2d');
+            const btcData = [34500, 35200, 34800, 35500, 36200, 35800, 36500, 36854];
+            new Chart(btcCtx, {
+                ...sparklineOptions,
+                data: {
+                    labels: [...Array(btcData.length).keys()],
+                    datasets: [{
+                        data: btcData,
+                        borderColor: '#10B981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)'
+                    }]
+                }
+            });
+            
+            // ETH Chart
+            const ethCtx = document.getElementById('eth-chart').getContext('2d');
+            const ethData = [2350, 2380, 2410, 2390, 2420, 2450, 2470, 2481];
+            new Chart(ethCtx, {
+                ...sparklineOptions,
+                data: {
+                    labels: [...Array(ethData.length).keys()],
+                    datasets: [{
+                        data: ethData,
+                        borderColor: '#10B981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)'
+                    }]
+                }
+            });
+            
+            // AAPL Chart
+            const aaplCtx = document.getElementById('aapl-chart').getContext('2d');
+            const aaplData = [180, 179.5, 178.9, 179.2, 178.6, 178.2, 178.4, 178.32];
+            new Chart(aaplCtx, {
+                ...sparklineOptions,
+                data: {
+                    labels: [...Array(aaplData.length).keys()],
+                    datasets: [{
+                        data: aaplData,
+                        borderColor: '#EF4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)'
+                    }]
+                }
+            });
+            
+            // TSLA Chart
+            const tslaCtx = document.getElementById('tsla-chart').getContext('2d');
+            const tslaData = [240, 242, 241, 243, 244, 246, 245, 245.78];
+            new Chart(tslaCtx, {
+                ...sparklineOptions,
+                data: {
+                    labels: [...Array(tslaData.length).keys()],
+                    datasets: [{
+                        data: tslaData,
+                        borderColor: '#10B981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)'
+                    }]
+                }
+            });
+            
+            // GLD Chart
+            const gldCtx = document.getElementById('gld-chart').getContext('2d');
+            const gldData = [1985, 1987, 1990, 1988, 1986, 1985, 1983, 1982.57];
+            new Chart(gldCtx, {
+                ...sparklineOptions,
+                data: {
+                    labels: [...Array(gldData.length).keys()],
+                    datasets: [{
+                        data: gldData,
+                        borderColor: '#EF4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)'
+                    }]
+                }
+            });
+            
+            // Quick action buttons
+            const buyButton = document.querySelector('.action-buy');
+            const sellButton = document.querySelector('.action-sell');
+            
+            buyButton.addEventListener('click', function() {
+                window.location.href = 'trade.html?action=buy';
+            });
+            
+            sellButton.addEventListener('click', function() {
+                window.location.href = 'trade.html?action=sell';
+            });
+        });
+    </script>
+</body>
+</html>

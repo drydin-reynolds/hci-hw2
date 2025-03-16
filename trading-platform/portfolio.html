@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeX - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/components.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="main-content">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-nav">
+                <div class="navbar-brand text-center mb-lg">TradeX</div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Main</div>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="dashboard.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="trade.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-exchange-alt"></i></span>
+                                Trade
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="portfolio.html" class="nav-link active">
+                                <span class="nav-icon"><i class="fas fa-briefcase"></i></span>
+                                Portfolio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="news.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                                Market News
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="reports.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-file-alt"></i></span>
+                                Reports
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Account</div>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-wallet"></i></span>
+                                Deposit/Withdraw
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-history"></i></span>
+                                Transaction History
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                                Settings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon help-btn">?</span>
+                                Help
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="user-avatar">JD</div>
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Premium Account</div>
+                </div>
+                <a href="index.html" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="content-area">
+            <header class="navbar">
+                <div>
+                    <h1 class="mb-0">My Portfolio</h1>
+                    <p class="text-muted">Manage your investments</p>
+                </div>
+                <div class="flex gap-md items-center">
+                    <div class="text-right">
+                        <div class="text-primary">Portfolio Value</div>
+                        <div class="text-muted">$28,325.41</div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Portfolio Summary Cards -->
+            <div class="account-summary">
+                <div class="summary-card">
+                    <div class="summary-card-title">Total Holdings</div>
+                    <div class="summary-card-value">$28,325.41</div>
+                    <div class="summary-card-change change-up">
+                        <span class="change-icon"><i class="fas fa-caret-up"></i></span>
+                        <span>+$1,954.12 (7.2%)</span>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-card-title">Today's P/L</div>
+                    <div class="summary-card-value">+$346.25</div>
+                    <div class="summary-card-change change-up">
+                        <span class="change-icon"><i class="fas fa-caret-up"></i></span>
+                        <span>+1.2% today</span>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-card-title">Total Assets</div>
+                    <div class="summary-card-value">12</div>
+                    <div class="summary-card-change">
+                        <span>Across 3 categories</span>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-card-title">Best Performer</div>
+                    <div class="summary-card-value">NVDA</div>
+                    <div class="summary-card-change change-up">
+                        <span class="change-icon"><i class="fas fa-caret-up"></i></span>
+                        <span>+27.4% all time</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Portfolio Card -->
+            <section class="portfolio-card">
+                <div class="portfolio-header">
+                    <h2 class="portfolio-title">My Holdings</h2>
+                    <div class="portfolio-filters">
+                        <div class="filter-label">Filter:</div>
+                        <div class="tabs">
+                            <div class="tab active" data-filter="all">All Assets</div>
+                            <div class="tab" data-filter="crypto">Crypto</div>
+                            <div class="tab" data-filter="stocks">Stocks</div>
+                            <div class="tab" data-filter="commodities">Commodities</div>
+                        </div>
+                        <select class="form-select">
+                            <option value="value">Sort by Value</option>
+                            <option value="name">Sort by Name</option>
+                            <option value="profit">Sort by Profit</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Asset</th>
+                                <th>Quantity</th>
+                                <th>Avg. Purchase Price</th>
+                                <th>Current Price</th>
+                                <th>Current Value</th>
+                                <th>Profit/Loss</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Crypto Assets -->
+                            <tr class="asset-row crypto">
+                                <td>
+                                    <div class="asset-info">
+                                        <div class="asset-icon">
+                                            <i class="fab fa-bitcoin"></i>
+                                        </div>
+                                        <div>
+                                            <div class="asset-name">Bitcoin</div>
+                                            <div class="asset-symbol">BTC</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="asset-quantity">0.326 BTC</td>
+                                <td>$32,548.75</td>
+                                <td>$36,854.21</td>
+                                <td class="asset-value">$12,014.47</td>
+                                <td class="asset-change change-up">+$1,407.73 (13.3%)</td>
+                                <td class="asset-actions">
+                                    <button class="btn btn-sm btn-success">Buy</button>
+                                    <button class="btn btn-sm btn-error">Sell</button>
+                                </td>
+                            </tr>
+                            <tr class="asset-row crypto">
+                                <td>
+                                    <div class="asset-info">
+                                        <div class="asset-icon">
+                                            <i class="fab fa-ethereum"></i>
+                                        </div>
+                                        <div>
+                                            <div class="asset-name">Ethereum</div>
+                                            <div class="asset-symbol">ETH</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="asset-quantity">0.76 ETH</td>
+                                <td>$2,358.42</td>
+                                <td>$2,481.15</td>
+                                <td class="asset-value">$1,885.67</td>
+                                <td class="asset-change change-up">+$93.24 (5.2%)</td>
+                                <td class="asset-actions">
+                                    <button class="btn btn-sm btn-success">Buy</button>
+                                    <button class="btn btn-sm btn-error">Sell</button>
+                                </td>
+                            </tr>
+                            
+                            <!-- Stock Assets -->
+                            <tr class="asset-row stocks">
+                                <td>
+                                    <div class="asset-info">
+                                        <div class="asset-icon">
+                                            <i class="fas fa-apple-alt"></i>
+                                        </div>
+                                        <div>
+                                            <div class="asset-name">Apple Inc.</div>
+                                            <div class="asset-symbol">AAPL</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="asset-quantity">25 Shares</td>
+                                <td>$172.15</td>
+                                <td>$178.32</td>
+                                <td class="asset-value">$4,458.00</td>
+                                <td class="asset-change change-up">+$154.25 (3.6%)</td>
+                                <td class="asset-actions">
+                                    <button class="btn btn-sm btn-success">Buy</button>
+                                    <button class="btn btn-sm btn-error">Sell</button>
+                                </td>
+                            </tr>
+                            <tr class="asset-row stocks">
+                                <td>
+                                    <div class="asset-info">
+                                        <div class="asset-icon">
+                                            <i class="fas fa-car"></i>
+                                        </div>
+                                        <div>
+                                            <div class="asset-name">Tesla Inc.</div>
+                                            <div class="asset-symbol">TSLA</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="asset-quantity">8 Shares</td>
+                                <td>$238.45</td>
+                                <td>$245.78</td>
+                                <td class="asset-value">$1,966.24</td>
+                                <td class="asset-change change-up">+$58.64 (3.1%)</td>
+                                <td class="asset-actions">
+                                    <button class="btn btn-sm btn-success">Buy</button>
+                                    <button class="btn btn-sm btn-error">Sell</button>
+                                </td>
+                            </tr>
+                            <tr class="asset-row stocks">
+                                <td>
+                                    <div class="asset-info">
+                                        <div class="asset-icon">
+                                            <i class="fas fa-microchip"></i>
+                                        </div>
+                                        <div>
+                                            <div class="asset-name">Nvidia Corp.</div>
+                                            <div class="asset-symbol">NVDA</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="asset-quantity">10 Shares</td>
+                                <td>$398.32</td>
+                                <td>$432.67</td>
+                                <td class="asset-value">$4,326.70</td>
+                                <td class="asset-change change-up">+$343.50 (8.6%)</td>
+                                <td class="asset-actions">
+                                    <button class="btn btn-sm btn-success">Buy</button>
+                                    <button class="btn btn-sm btn-error">Sell</button>
+                                </td>
+                            </tr>
+                            <tr class="asset-row stocks">
+                                <td>
+                                    <div class="asset-info">
+                                        <div class="asset-icon">
+                                            <i class="fab fa-microsoft"></i>
+                                        </div>
+                                        <div>
+                                            <div class="asset-name">Microsoft Corp.</div>
+                                            <div class="asset-symbol">MSFT</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="asset-quantity">6 Shares</td>
+                                <td>$292.75</td>
+                                <td>$287.45</td>
+                                <td class="asset-value">$1,724.70</td>
+                                <td class="asset-change change-down">-$31.80 (-1.8%)</td>
+                                <td class="asset-actions">
+                                    <button class="btn btn-sm btn-success">Buy</button>
+                                    <button class="btn btn-sm btn-error">Sell</button>
+                                </td>
+                            </tr>
+                            
+                            <!-- Commodity Assets -->
+                            <tr class="asset-row commodities">
+                                <td>
+                                    <div class="asset-info">
+                                        <div class="asset-icon">
+                                            <i class="fas fa-oil-can"></i>
+                                        </div>
+                                        <div>
+                                            <div class="asset-name">Gold</div>
+                                            <div class="asset-symbol">GLD</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="asset-quantity">0.75 oz</td>
+                                <td>$1,978.45</td>
+                                <td>$1,982.57</td>
+                                <td class="asset-value">$1,486.93</td>
+                                <td class="asset-change change-up">+$3.09 (0.2%)</td>
+                                <td class="asset-actions">
+                                    <button class="btn btn-sm btn-success">Buy</button>
+                                    <button class="btn btn-sm btn-error">Sell</button>
+                                </td>
+                            </tr>
+                            <tr class="asset-row commodities">
+                                <td>
+                                    <div class="asset-info">
+                                        <div class="asset-icon">
+                                            <i class="fas fa-gas-pump"></i>
+                                        </div>
+                                        <div>
+                                            <div class="asset-name">Silver</div>
+                                            <div class="asset-symbol">SLV</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="asset-quantity">18.5 oz</td>
+                                <td>$23.15</td>
+                                <td>$22.35</td>
+                                <td class="asset-value">$413.48</td>
+                                <td class="asset-change change-down">-$14.80 (-3.5%)</td>
+                                <td class="asset-actions">
+                                    <button class="btn btn-sm btn-success">Buy</button>
+                                    <button class="btn btn-sm btn-error">Sell</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Total</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th>$28,325.41</th>
+                                <th class="change-up">+$1,954.12 (7.2%)</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Portfolio Performance & Allocation -->
+            <div class="grid grid-cols-2 gap-lg mt-lg">
+                <!-- Performance Chart -->
+                <section class="performance-chart">
+                    <div class="card">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Portfolio Performance</h3>
+                            <div class="chart-period">
+                                <button class="period-btn">1D</button>
+                                <button class="period-btn">1W</button>
+                                <button class="period-btn active">1M</button>
+                                <button class="period-btn">3M</button>
+                                <button class="period-btn">1Y</button>
+                                <button class="period-btn">All</button>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="portfolio-chart"></canvas>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Allocation Chart -->
+                <section class="portfolio-allocation">
+                    <h3 class="allocation-title">Portfolio Allocation</h3>
+                    <div class="allocation-chart">
+                        <div class="pie-chart">
+                            <canvas id="allocation-chart"></canvas>
+                        </div>
+                        <div class="allocation-legend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #1E3A8A;"></div>
+                                <div class="legend-label">Cryptocurrencies</div>
+                                <div class="legend-value">$13,900.14</div>
+                                <div class="legend-percent">49.1%</div>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #0D9488;"></div>
+                                <div class="legend-label">Stocks</div>
+                                <div class="legend-value">$12,475.64</div>
+                                <div class="legend-percent">44.0%</div>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #F97316;"></div>
+                                <div class="legend-label">Commodities</div>
+                                <div class="legend-value">$1,900.41</div>
+                                <div class="legend-percent">6.9%</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Recommendations & Insights -->
+            <section class="card mt-lg">
+                <div class="card-header">
+                    <h3 class="card-title">Recommendations & Insights</h3>
+                </div>
+                <div class="card-content">
+                    <div class="grid grid-cols-3 gap-md">
+                        <div class="alert alert-info">
+                            <h4 class="mb-sm">Portfolio Diversification</h4>
+                            <p>Your portfolio is relatively concentrated in cryptocurrencies (49.1%). Consider diversifying into more asset classes to reduce risk.</p>
+                        </div>
+                        <div class="alert alert-success">
+                            <h4 class="mb-sm">Top Performer</h4>
+                            <p>Bitcoin (BTC) has been your best performer with +13.3% returns. Consider rebalancing to maintain your target allocation.</p>
+                        </div>
+                        <div class="alert alert-info">
+                            <h4 class="mb-sm">Opportunity</h4>
+                            <p>Based on your portfolio, you might consider adding exposure to ETFs or bonds for more stability.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup filtering tabs
+            const tabs = document.querySelectorAll('.tab');
+            const assetRows = document.querySelectorAll('.asset-row');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Get filter value
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Show/hide rows based on filter
+                    assetRows.forEach(row => {
+                        if (filter === 'all' || row.classList.contains(filter)) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Portfolio Performance Chart
+            const portfolioCtx = document.getElementById('portfolio-chart').getContext('2d');
+            const portfolioChart = new Chart(portfolioCtx, {
+                type: 'line',
+                data: {
+                    labels: [...Array(30).keys()].map(i => {
+                        const date = new Date();
+                        date.setDate(date.getDate() - (30 - i - 1));
+                        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    }),
+                    datasets: [{
+                        label: 'Portfolio Value',
+                        data: [
+                            25400, 25600, 25300, 25450, 25700, 26100, 26300, 
+                            26150, 26400, 26750, 26900, 27050, 26800, 26900, 
+                            27200, 27400, 27350, 27100, 27250, 27500, 27300,
+                            27600, 27800, 28100, 27900, 28050, 28200, 28400, 
+                            28300, 28325
+                        ],
+                        borderColor: '#1E3A8A',
+                        backgroundColor: 'rgba(30, 58, 138, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return `$${context.raw.toLocaleString()}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                maxTicksLimit: 10
+                            }
+                        },
+                        y: {
+                            grid: {
+                                borderDash: [5, 5]
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Portfolio Allocation Chart
+            const allocationCtx = document.getElementById('allocation-chart').getContext('2d');
+            const allocationChart = new Chart(allocationCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Cryptocurrencies', 'Stocks', 'Commodities'],
+                    datasets: [{
+                        data: [49.1, 44.0, 6.9],
+                        backgroundColor: ['#1E3A8A', '#0D9488', '#F97316'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Buy/Sell button actions
+            const buyButtons = document.querySelectorAll('.btn-success');
+            const sellButtons = document.querySelectorAll('.btn-error');
+            
+            buyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const assetRow = this.closest('.asset-row');
+                    const assetName = assetRow.querySelector('.asset-name').textContent;
+                    const assetSymbol = assetRow.querySelector('.asset-symbol').textContent;
+                    
+                    // Redirect to trade page with asset info
+                    window.location.href = `trade.html?action=buy&asset=${assetSymbol}`;
+                });
+            });
+            
+            sellButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const assetRow = this.closest('.asset-row');
+                    const assetName = assetRow.querySelector('.asset-name').textContent;
+                    const assetSymbol = assetRow.querySelector('.asset-symbol').textContent;
+                    
+                    // Redirect to trade page with asset info
+                    window.location.href = `trade.html?action=sell&asset=${assetSymbol}`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

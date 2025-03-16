@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeX - Trade</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/components.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="main-content">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-nav">
+                <div class="navbar-brand text-center mb-lg">TradeX</div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Main</div>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="dashboard.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="trade.html" class="nav-link active">
+                                <span class="nav-icon"><i class="fas fa-exchange-alt"></i></span>
+                                Trade
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="portfolio.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-briefcase"></i></span>
+                                Portfolio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="news.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                                Market News
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="reports.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-file-alt"></i></span>
+                                Reports
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Account</div>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-wallet"></i></span>
+                                Deposit/Withdraw
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-history"></i></span>
+                                Transaction History
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                                Settings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon help-btn">?</span>
+                                Help
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="user-avatar">JD</div>
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Premium Account</div>
+                </div>
+                <a href="index.html" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="content-area">
+            <header class="navbar">
+                <div>
+                    <h1 class="mb-0">Trade</h1>
+                    <p class="text-muted">Place buy and sell orders</p>
+                </div>
+                <div class="flex gap-md items-center">
+                    <div class="text-right">
+                        <div class="text-primary">Available Cash</div>
+                        <div class="text-muted">$4,133.51</div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="grid grid-cols-2 gap-lg">
+                <!-- Price Chart Section -->
+                <section class="price-chart">
+                    <div class="chart-filters">
+                        <div class="chart-filter-group">
+                            <div class="chart-filter-label">Time Range</div>
+                            <div class="chart-filter-options">
+                                <button class="chart-filter-option">1D</button>
+                                <button class="chart-filter-option">1W</button>
+                                <button class="chart-filter-option active">1M</button>
+                                <button class="chart-filter-option">3M</button>
+                                <button class="chart-filter-option">1Y</button>
+                                <button class="chart-filter-option">All</button>
+                            </div>
+                        </div>
+                        <div class="chart-filter-group">
+                            <div class="chart-filter-label">Chart Type</div>
+                            <div class="chart-filter-options">
+                                <button class="chart-filter-option active">Line</button>
+                                <button class="chart-filter-option">Candle</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container" style="height: 300px">
+                        <canvas id="asset-chart"></canvas>
+                    </div>
+                    
+                    <div class="chart-statistics">
+                        <div class="chart-stat">
+                            <div class="chart-stat-label">Current Price</div>
+                            <div class="chart-stat-value">$36,854.21</div>
+                        </div>
+                        <div class="chart-stat">
+                            <div class="chart-stat-label">24h Change</div>
+                            <div class="chart-stat-value text-success">+4.52%</div>
+                        </div>
+                        <div class="chart-stat">
+                            <div class="chart-stat-label">24h High</div>
+                            <div class="chart-stat-value">$37,125.45</div>
+                        </div>
+                        <div class="chart-stat">
+                            <div class="chart-stat-label">24h Low</div>
+                            <div class="chart-stat-value">$35,250.18</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Order Form Section -->
+                <section class="order-form">
+                    <div class="order-types">
+                        <div class="order-type buy active" id="buy-tab">Buy</div>
+                        <div class="order-type sell" id="sell-tab">Sell</div>
+                    </div>
+                    
+                    <form id="trade-form">
+                        <div class="order-row">
+                            <div class="order-row-label">Asset</div>
+                            <div class="order-row-value">
+                                <div class="asset-dropdown">
+                                    <div class="asset-dropdown-selected" id="selected-asset">
+                                        <div class="asset-info">
+                                            <div class="asset-icon">
+                                                <i class="fab fa-bitcoin"></i>
+                                            </div>
+                                            <div>
+                                                <div class="asset-name">Bitcoin</div>
+                                                <div class="asset-symbol">BTC</div>
+                                            </div>
+                                        </div>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="asset-dropdown-menu" id="asset-dropdown-menu" style="display: none;">
+                                        <div class="asset-dropdown-item" data-asset="BTC" data-price="36854.21" data-icon="fab fa-bitcoin">
+                                            <div class="asset-icon">
+                                                <i class="fab fa-bitcoin"></i>
+                                            </div>
+                                            <div>
+                                                <div class="asset-name">Bitcoin</div>
+                                                <div class="asset-symbol">BTC - $36,854.21</div>
+                                            </div>
+                                        </div>
+                                        <div class="asset-dropdown-item" data-asset="ETH" data-price="2481.15" data-icon="fab fa-ethereum">
+                                            <div class="asset-icon">
+                                                <i class="fab fa-ethereum"></i>
+                                            </div>
+                                            <div>
+                                                <div class="asset-name">Ethereum</div>
+                                                <div class="asset-symbol">ETH - $2,481.15</div>
+                                            </div>
+                                        </div>
+                                        <div class="asset-dropdown-item" data-asset="AAPL" data-price="178.32" data-icon="fas fa-apple-alt">
+                                            <div class="asset-icon">
+                                                <i class="fas fa-apple-alt"></i>
+                                            </div>
+                                            <div>
+                                                <div class="asset-name">Apple Inc.</div>
+                                                <div class="asset-symbol">AAPL - $178.32</div>
+                                            </div>
+                                        </div>
+                                        <div class="asset-dropdown-item" data-asset="TSLA" data-price="245.78" data-icon="fas fa-car">
+                                            <div class="asset-icon">
+                                                <i class="fas fa-car"></i>
+                                            </div>
+                                            <div>
+                                                <div class="asset-name">Tesla Inc.</div>
+                                                <div class="asset-symbol">TSLA - $245.78</div>
+                                            </div>
+                                        </div>
+                                        <div class="asset-dropdown-item" data-asset="GLD" data-price="1982.57" data-icon="fas fa-oil-can">
+                                            <div class="asset-icon">
+                                                <i class="fas fa-oil-can"></i>
+                                            </div>
+                                            <div>
+                                                <div class="asset-name">Gold</div>
+                                                <div class="asset-symbol">GLD - $1,982.57</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-row">
+                            <div class="order-row-label">Type</div>
+                            <div class="order-row-value">
+                                <select class="form-select" id="order-type">
+                                    <option value="market">Market Order</option>
+                                    <option value="limit">Limit Order</option>
+                                    <option value="stop">Stop Order</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="order-row">
+                            <div class="order-row-label">Quantity</div>
+                            <div class="order-row-value">
+                                <div class="quantity-input-wrapper">
+                                    <input type="number" id="quantity" class="form-input quantity-input" placeholder="0.00" step="0.01" min="0">
+                                    <button type="button" class="max-btn" id="max-btn">MAX</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-row" id="limit-price-row" style="display: none;">
+                            <div class="order-row-label">Limit Price</div>
+                            <div class="order-row-value">
+                                <input type="number" id="limit-price" class="form-input" placeholder="0.00" step="0.01" min="0">
+                            </div>
+                        </div>
+                        
+                        <div class="total-preview">
+                            <div class="preview-row">
+                                <div>Current Price</div>
+                                <div id="current-price">$36,854.21</div>
+                            </div>
+                            <div class="preview-row">
+                                <div>Price per unit</div>
+                                <div id="price-per-unit">$36,854.21</div>
+                            </div>
+                            <div class="preview-row">
+                                <div>Fee (0.1%)</div>
+                                <div id="fee">$0.00</div>
+                            </div>
+                            <div class="preview-row">
+                                <div>Total</div>
+                                <div id="total">$0.00</div>
+                            </div>
+                            <div class="price-impact" id="price-impact">
+                                Estimated price impact: <span>0.00%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group notes-field">
+                            <label for="notes" class="form-label">Add Notes</label>
+                            <textarea id="notes" class="form-input notes-input" placeholder="Add any notes about this trade (optional)"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn w-full order-btn-buy" id="order-btn">Buy Bitcoin</button>
+                    </form>
+                </section>
+            </div>
+            
+            <!-- Open Orders & History -->
+            <div class="grid grid-cols-2 gap-lg mt-lg">
+                <!-- Open Orders -->
+                <section class="open-orders">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Open Orders</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Asset</th>
+                                            <th>Type</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mar 15, 2025</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <div class="asset-icon">
+                                                        <i class="fab fa-ethereum"></i>
+                                                    </div>
+                                                    <div>ETH</div>
+                                                </div>
+                                            </td>
+                                            <td>Limit Buy</td>
+                                            <td>0.5 ETH @ $2,400</td>
+                                            <td><span class="badge badge-primary">Pending</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline">Cancel</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mar 14, 2025</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <div class="asset-icon">
+                                                        <i class="fas fa-apple-alt"></i>
+                                                    </div>
+                                                    <div>AAPL</div>
+                                                </div>
+                                            </td>
+                                            <td>Stop Sell</td>
+                                            <td>10 AAPL @ $175</td>
+                                            <td><span class="badge badge-primary">Pending</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline">Cancel</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Order History -->
+                <section class="order-history">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Order History</h3>
+                            <a href="#" class="btn btn-sm btn-outline">View All</a>
+                        </div>
+                        <div class="card-content">
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Asset</th>
+                                            <th>Type</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mar 15, 2025</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <div class="asset-icon">
+                                                        <i class="fab fa-bitcoin"></i>
+                                                    </div>
+                                                    <div>BTC</div>
+                                                </div>
+                                            </td>
+                                            <td>Market Buy</td>
+                                            <td>0.023 BTC @ $36,754</td>
+                                            <td><span class="badge badge-success">Completed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mar 14, 2025</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <div class="asset-icon">
+                                                        <i class="fab fa-ethereum"></i>
+                                                    </div>
+                                                    <div>ETH</div>
+                                                </div>
+                                            </td>
+                                            <td>Market Sell</td>
+                                            <td>1.24 ETH @ $2,475</td>
+                                            <td><span class="badge badge-success">Completed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mar 14, 2025</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <div class="asset-icon">
+                                                        <i class="fas fa-car"></i>
+                                                    </div>
+                                                    <div>TSLA</div>
+                                                </div>
+                                            </td>
+                                            <td>Market Buy</td>
+                                            <td>5 TSLA @ $243.52</td>
+                                            <td><span class="badge badge-success">Completed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mar 13, 2025</td>
+                                            <td>
+                                                <div class="asset-info">
+                                                    <div class="asset-icon">
+                                                        <i class="fas fa-apple-alt"></i>
+                                                    </div>
+                                                    <div>AAPL</div>
+                                                </div>
+                                            </td>
+                                            <td>Market Buy</td>
+                                            <td>10 AAPL @ $179.05</td>
+                                            <td><span class="badge badge-success">Completed</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Order Confirmation Modal -->
+    <div class="modal-overlay" id="confirmation-modal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Confirm Order</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to place this order?</p>
+                
+                <div class="total-preview">
+                    <div class="preview-row">
+                        <div>Order Type</div>
+                        <div id="confirm-order-type">Market Buy</div>
+                    </div>
+                    <div class="preview-row">
+                        <div>Asset</div>
+                        <div id="confirm-asset">Bitcoin (BTC)</div>
+                    </div>
+                    <div class="preview-row">
+                        <div>Quantity</div>
+                        <div id="confirm-quantity">0.00</div>
+                    </div>
+                    <div class="preview-row">
+                        <div>Price per unit</div>
+                        <div id="confirm-price">$0.00</div>
+                    </div>
+                    <div class="preview-row">
+                        <div>Fee (0.1%)</div>
+                        <div id="confirm-fee">$0.00</div>
+                    </div>
+                    <div class="preview-row">
+                        <div>Total</div>
+                        <div id="confirm-total">$0.00</div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <p><i class="fas fa-info-circle"></i> This transaction will be processed immediately at the current market price. Price may vary due to market conditions.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancel-order">Cancel</button>
+                <button class="btn btn-primary" id="confirm-order">Confirm</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="success-modal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Order Successful</h3>
+            </div>
+            <div class="modal-body text-center">
+                <div class="success-checkmark">
+                    <div class="check-icon">
+                        <span class="icon-line line-tip"></span>
+                        <span class="icon-line line-long"></span>
+                        <div class="icon-circle"></div>
+                        <div class="icon-fix"></div>
+                    </div>
+                </div>
+                <h4 id="success-title">Order Placed Successfully!</h4>
+                <p id="success-description">Your order has been processed and completed.</p>
+                
+                <div class="total-preview">
+                    <div class="preview-row">
+                        <div>Transaction ID</div>
+                        <div id="transaction-id">TX-2025031545782</div>
+                    </div>
+                    <div class="preview-row">
+                        <div>Order Type</div>
+                        <div id="success-order-type">Market Buy</div>
+                    </div>
+                    <div class="preview-row">
+                        <div>Asset</div>
+                        <div id="success-asset">Bitcoin (BTC)</div>
+                    </div>
+                    <div class="preview-row">
+                        <div>Quantity</div>
+                        <div id="success-quantity">0.00</div>
+                    </div>
+                    <div class="preview-row">
+                        <div>Total</div>
+                        <div id="success-total">$0.00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary w-full" id="success-continue">Back to Trading</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Chart data for Bitcoin (default asset)
+            const chartCtx = document.getElementById('asset-chart').getContext('2d');
+            const daysInMonth = 30;
+            
+            const btcData = [
+                34500, 34300, 34600, 34800, 34750, 35100, 35300, 35200, 34900, 35000,
+                35200, 35500, 35700, 35400, 35600, 35900, 36100, 36000, 35800, 36200,
+                36500, 36300, 36100, 36400, 36600, 36500, 36300, 36700, 36900, 36854
+            ];
+            
+            const assetChart = new Chart(chartCtx, {
+                type: 'line',
+                data: {
+                    labels: [...Array(daysInMonth).keys()].map(i => {
+                        const date = new Date();
+                        date.setDate(date.getDate() - (daysInMonth - i - 1));
+                        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    }),
+                    datasets: [{
+                        label: 'Bitcoin (BTC) Price',
+                        data: btcData,
+                        borderColor: '#1E3A8A',
+                        backgroundColor: 'rgba(30, 58, 138, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return `$${context.raw.toLocaleString()}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                maxTicksLimit: 10
+                            }
+                        },
+                        y: {
+                            grid: {
+                                borderDash: [5, 5]
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Variables for order form
+            const buyTab = document.getElementById('buy-tab');
+            const sellTab = document.getElementById('sell-tab');
+            const orderBtn = document.getElementById('order-btn');
+            const selectedAsset = document.getElementById('selected-asset');
+            const assetDropdownMenu = document.getElementById('asset-dropdown-menu');
+            const assetDropdownItems = document.querySelectorAll('.asset-dropdown-item');
+            const orderTypeSelect = document.getElementById('order-type');
+            const limitPriceRow = document.getElementById('limit-price-row');
+            const quantityInput = document.getElementById('quantity');
+            const maxBtn = document.getElementById('max-btn');
+            const currentPriceEl = document.getElementById('current-price');
+            const pricePerUnitEl = document.getElementById('price-per-unit');
+            const feeEl = document.getElementById('fee');
+            const totalEl = document.getElementById('total');
+            
+            // Modals
+            const confirmationModal = document.getElementById('confirmation-modal');
+            const successModal = document.getElementById('success-modal');
+            const modalCloseButtons = document.querySelectorAll('.modal-close');
+            
+            // Buy/Sell tabs
+            buyTab.addEventListener('click', function() {
+                buyTab.classList.add('active');
+                sellTab.classList.remove('active');
+                orderBtn.classList.remove('order-btn-sell');
+                orderBtn.classList.add('order-btn-buy');
+                orderBtn.textContent = `Buy ${getCurrentAssetName()}`;
+                updateOrderSummary();
+            });
+            
+            sellTab.addEventListener('click', function() {
+                sellTab.classList.add('active');
+                buyTab.classList.remove('active');
+                orderBtn.classList.remove('order-btn-buy');
+                orderBtn.classList.add('order-btn-sell');
+                orderBtn.textContent = `Sell ${getCurrentAssetName()}`;
+                updateOrderSummary();
+            });
+            
+            // Asset dropdown
+            selectedAsset.addEventListener('click', function() {
+                assetDropdownMenu.style.display = assetDropdownMenu.style.display === 'none' ? 'block' : 'none';
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!selectedAsset.contains(e.target) && !assetDropdownMenu.contains(e.target)) {
+                    assetDropdownMenu.style.display = 'none';
+                }
+            });
+            
+            assetDropdownItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const assetName = this.querySelector('.asset-name').textContent;
+                    const assetSymbol = this.dataset.asset;
+                    const assetIcon = this.dataset.icon;
+                    const assetPrice = this.dataset.price;
+                    
+                    // Update selected asset display
+                    const iconHTML = `<i class="${assetIcon}"></i>`;
+                    selectedAsset.querySelector('.asset-icon').innerHTML = iconHTML;
+                    selectedAsset.querySelector('.asset-name').textContent = assetName;
+                    selectedAsset.querySelector('.asset-symbol').textContent = assetSymbol;
+                    
+                    // Update price display
+                    const formattedPrice = parseFloat(assetPrice).toLocaleString('en-US', {
+                        style: 'currency',
+                        currency: 'USD'
+                    });
+                    currentPriceEl.textContent = formattedPrice;
+                    pricePerUnitEl.textContent = formattedPrice;
+                    
+                    // Update chart (in a real app, we would load data for the selected asset)
+                    assetChart.data.datasets[0].label = `${assetName} (${assetSymbol}) Price`;
+                    assetChart.update();
+                    
+                    // Update button text
+                    const actionText = buyTab.classList.contains('active') ? 'Buy' : 'Sell';
+                    orderBtn.textContent = `${actionText} ${assetName}`;
+                    
+                    // Close dropdown
+                    assetDropdownMenu.style.display = 'none';
+                    
+                    // Update calculations
+                    updateOrderSummary();
+                });
+            });
+            
+            // Order type selection
+            orderTypeSelect.addEventListener('change', function() {
+                const orderType = this.value;
+                if (orderType === 'limit' || orderType === 'stop') {
+                    limitPriceRow.style.display = 'flex';
+                } else {
+                    limitPriceRow.style.display = 'none';
+                }
+            });
+            
+            // Max button functionality
+            maxBtn.addEventListener('click', function() {
+                const assetSymbol = selectedAsset.querySelector('.asset-symbol').textContent;
+                const assetPrice = parseFloat(currentPriceEl.textContent.replace(/[^0-9.-]+/g, ''));
+                
+                // Calculate max possible quantity based on available cash
+                // For this demo, we'll use the hard-coded available cash value
+                const availableCash = 4133.51;
+                
+                // Account for fee (0.1%)
+                const maxQuantity = (availableCash / assetPrice) * 0.999;
+                
+                // Format based on asset type
+                if (assetSymbol === 'BTC' || assetSymbol === 'ETH') {
+                    // For crypto, allow more decimal places
+                    quantityInput.value = maxQuantity.toFixed(6);
+                } else {
+                    // For stocks, round to whole shares
+                    quantityInput.value = Math.floor(maxQuantity);
+                }
+                
+                // Update totals
+                updateOrderSummary();
+            });
+            
+            // Quantity change
+            quantityInput.addEventListener('input', updateOrderSummary);
+            
+            // Update order summary calculations
+            function updateOrderSummary() {
+                const quantity = parseFloat(quantityInput.value) || 0;
+                const price = parseFloat(currentPriceEl.textContent.replace(/[^0-9.-]+/g, ''));
+                
+                // Calculate subtotal
+                const subtotal = quantity * price;
+                
+                // Calculate fee (0.1%)
+                const fee = subtotal * 0.001;
+                
+                // Calculate total
+                const total = buyTab.classList.contains('active') ? subtotal + fee : subtotal - fee;
+                
+                // Update display
+                feeEl.textContent = fee.toLocaleString('en-US', {
+                    style: 'currency',
+                    currency: 'USD'
+                });
+                
+                totalEl.textContent = total.toLocaleString('en-US', {
+                    style: 'currency',
+                    currency: 'USD'
+                });
+                
+                // Update price impact (just for demonstration)
+                const impact = quantity > 10 ? 0.05 : quantity > 5 ? 0.02 : 0.00;
+                document.querySelector('#price-impact span').textContent = `${impact.toFixed(2)}%`;
+                
+                if (impact > 0.02) {
+                    document.querySelector('#price-impact').classList.add('impact-high');
+                } else {
+                    document.querySelector('#price-impact').classList.remove('impact-high');
+                }
+            }
+            
+            // Helper function to get current asset name
+            function getCurrentAssetName() {
+                return selectedAsset.querySelector('.asset-name').textContent;
+            }
+            
+            // Form submission
+            document.getElementById('trade-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const assetName = getCurrentAssetName();
+                const assetSymbol = selectedAsset.querySelector('.asset-symbol').textContent;
+                const orderType = orderTypeSelect.value;
+                const quantity = parseFloat(quantityInput.value) || 0;
+                const price = parseFloat(currentPriceEl.textContent.replace(/[^0-9.-]+/g, ''));
+                const total = parseFloat(totalEl.textContent.replace(/[^0-9.-]+/g, ''));
+                const fee = parseFloat(feeEl.textContent.replace(/[^0-9.-]+/g, ''));
+                const isBuy = buyTab.classList.contains('active');
+                
+                // Validate
+                if (quantity <= 0) {
+                    alert('Please enter a valid quantity.');
+                    return;
+                }
+                
+                // Update confirmation modal
+                document.getElementById('confirm-order-type').textContent = `${orderType.charAt(0).toUpperCase() + orderType.slice(1)} ${isBy ? 'Buy' : 'Sell'}`;
+                document.getElementById('confirm-asset').textContent = `${assetName} (${assetSymbol})`;
+                document.getElementById('confirm-quantity').textContent = quantity;
+                document.getElementById('confirm-price').textContent = price.toLocaleString('en-US', {
+                    style: 'currency',
+                    currency: 'USD'
+                });
+                document.getElementById('confirm-fee').textContent = fee.toLocaleString('en-US', {
+                    style: 'currency',
+                    currency: 'USD'
+                });
+                document.getElementById('confirm-total').textContent = total.toLocaleString('en-US', {
+                    style: 'currency',
+                    currency: 'USD'
+                });
+                
+                // Show confirmation modal
+                confirmationModal.style.display = 'flex';
+            });
+            
+            // Modal close buttons
+            modalCloseButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    confirmationModal.style.display = 'none';
+                    successModal.style.display = 'none';
+                });
+            });
+            
+            // Cancel order button
+            document.getElementById('cancel-order').addEventListener('click', function() {
+                confirmationModal.style.display = 'none';
+            });
+            
+            // Confirm order button
+            document.getElementById('confirm-order').addEventListener('click', function() {
+                // Hide confirmation modal
+                confirmationModal.style.display = 'none';
+                
+                // Generate random transaction ID
+                const transactionId = `TX-${Date.now().toString().slice(-10)}${Math.floor(Math.random() * 1000)}`;
+                document.getElementById('transaction-id').textContent = transactionId;
+                
+                // Copy confirmation details to success modal
+                document.getElementById('success-order-type').textContent = document.getElementById('confirm-order-type').textContent;
+                document.getElementById('success-asset').textContent = document.getElementById('confirm-asset').textContent;
+                document.getElementById('success-quantity').textContent = document.getElementById('confirm-quantity').textContent;
+                document.getElementById('success-total').textContent = document.getElementById('confirm-total').textContent;
+                
+                // Set success title based on order type
+                const isBy = buyTab.classList.contains('active');
+                document.getElementById('success-title').textContent = `${isBy ? 'Purchase' : 'Sale'} Successful!`;
+                document.getElementById('success-description').textContent = `Your ${isBy ? 'purchase of' : 'sale of'} ${document.getElementById('confirm-asset').textContent} has been processed.`;
+                
+                // Show success modal
+                successModal.style.display = 'flex';
+                
+                // Reset form
+                document.getElementById('trade-form').reset();
+                updateOrderSummary();
+            });
+            
+            // Success continue button
+            document.getElementById('success-continue').addEventListener('click', function() {
+                successModal.style.display = 'none';
+            });
+            
+            // Initialize with default values
+            updateOrderSummary();
+            
+            // Check URL parameters for pre-selected action (from dashboard quick actions)
+            const urlParams = new URLSearchParams(window.location.search);
+            const action = urlParams.get('action');
+            
+            if (action === 'sell') {
+                sellTab.click();
+            } else if (action === 'buy') {
+                buyTab.click();
+            }
+        });
+    </script>
+</body>
+</html>

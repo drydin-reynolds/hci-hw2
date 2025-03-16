@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeX - Reports & Insights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/components.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="main-content">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-nav">
+                <div class="navbar-brand text-center mb-lg">TradeX</div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Main</div>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="dashboard.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="trade.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-exchange-alt"></i></span>
+                                Trade
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="portfolio.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-briefcase"></i></span>
+                                Portfolio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="news.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                                Market News
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="reports.html" class="nav-link active">
+                                <span class="nav-icon"><i class="fas fa-file-alt"></i></span>
+                                Reports
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Account</div>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-wallet"></i></span>
+                                Deposit/Withdraw
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-history"></i></span>
+                                Transaction History
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                                Settings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon help-btn">?</span>
+                                Help
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="user-avatar">JD</div>
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Premium Account</div>
+                </div>
+                <a href="index.html" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="content-area">
+            <header class="navbar">
+                <div>
+                    <h1 class="mb-0">Reports & Insights</h1>
+                    <p class="text-muted">Track your performance and analyze your trading patterns</p>
+                </div>
+                <div class="flex gap-md items-center">
+                    <div class="report-period-selector">
+                        <span>Time Period:</span>
+                        <select class="period-select" id="period-selector">
+                            <option value="1w">Last 7 Days</option>
+                            <option value="1m" selected>Last 30 Days</option>
+                            <option value="3m">Last 90 Days</option>
+                            <option value="6m">Last 180 Days</option>
+                            <option value="1y">Last 365 Days</option>
+                            <option value="ytd">Year to Date</option>
+                            <option value="all">All Time</option>
+                        </select>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Performance Metrics -->
+            <section class="report-card">
+                <div class="report-header">
+                    <h2 class="report-title">Performance Summary</h2>
+                    <div class="flex gap-md">
+                        <button class="btn btn-sm btn-outline"><i class="fas fa-download"></i> Export PDF</button>
+                        <button class="btn btn-sm btn-outline"><i class="fas fa-file-csv"></i> Export CSV</button>
+                    </div>
+                </div>
+                
+                <div class="report-stats">
+                    <div class="stat-card">
+                        <div class="stat-title">Total P/L</div>
+                        <div class="stat-value text-success">+$1,954.12</div>
+                        <div class="stat-comparison change-up">
+                            <i class="fas fa-caret-up"></i>
+                            <span>+7.2% from initial investment</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Total Trades</div>
+                        <div class="stat-value">42</div>
+                        <div class="stat-comparison">
+                            <span>28 buys, 14 sells</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Win Rate</div>
+                        <div class="stat-value">68%</div>
+                        <div class="stat-comparison">
+                            <span>28 profitable, 13 unprofitable</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Avg. Holding Period</div>
+                        <div class="stat-value">32 days</div>
+                        <div class="stat-comparison">
+                            <span>Longest: 124 days</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Largest Gain</div>
+                        <div class="stat-value text-success">+$845.23</div>
+                        <div class="stat-comparison">
+                            <span>NVDA on Mar 2, 2025</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Largest Loss</div>
+                        <div class="stat-value text-error">-$312.45</div>
+                        <div class="stat-comparison">
+                            <span>SLV on Feb 15, 2025</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Equity Curve Chart -->
+                <div class="report-chart-container">
+                    <h3 class="chart-title">Equity Curve</h3>
+                    <div style="height: 300px;">
+                        <canvas id="equity-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Trading Activity -->
+            <section class="report-card">
+                <div class="report-header">
+                    <h2 class="report-title">Trading Activity</h2>
+                </div>
+                
+                <!-- Trade Volume Chart -->
+                <div class="grid grid-cols-2 gap-lg">
+                    <div class="report-chart-container">
+                        <h3 class="chart-title">Trade Volume</h3>
+                        <div style="height: 250px;">
+                            <canvas id="volume-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="report-chart-container">
+                        <h3 class="chart-title">Buy/Sell Distribution</h3>
+                        <div style="height: 250px;">
+                            <canvas id="buysell-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Trades Table -->
+                <div class="report-table-container mt-lg">
+                    <h3 class="chart-title">Recent Trades</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Asset</th>
+                                <th>Type</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>P/L</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mar 15, 2025</td>
+                                <td>
+                                    <div class="asset-info">
+                                        <div class="asset-icon">
+                                            <i class="fab fa-bitcoin"></i>
+                                        </div>
+                                        <div>BTC</div>
+                                    </div>
+                                </td>
+                                <td>Buy</td>
+                                <td>$36,754.21</td>
+                                <td>0.023 BTC</td>
+                                <td>$845.35</td>
+                                <td class="text-muted">-</td>
+                                <td>Bought during dip</td>
+                            </tr>
+                            <tr>
+                                <td>Mar 14, 2025</td>
+                                <td>
+                                    <div class="asset-info">
+                                        <div class="asset-icon">
+                                            <i class="fab fa-ethereum"></i>
+                                        </div>
+                                        <div>ETH</div>
+                                    </div>
+                                </td>
+                                <td>Sell</td>
+                                <td>$2,475.32</td>
+                                <td>1.24 ETH</td>
+                                <td>$3,069.40</td>
+                                <td class="text-success">+$145.12</td>
+                                <td>Taking profit</td>
+                            </tr>
+                            <tr>
+                                <td>Mar 14, 2025</td>
+                                <td>
+                                    <div class="asset-info">
+                                        <div class="asset-icon">
+                                            <i class="fas fa-car"></i>
+                                        </div>
+                                        <div>TSLA</div>
+                                    </div>
+                                </td>
+                                <td>Buy</td>
+                                <td>$243.52</td>
+                                <td>5 TSLA</td>
+                                <td>$1,217.60</td>
+                                <td class="text-muted">-</td>
+                                <td>New product announcement</td>
+                            </tr>
+                            <tr>
+                                <td>Mar 13, 2025</td>
+                                <td>
+                                    <div class="asset-info">
+                                        <div class="asset-icon">
+                                            <i class="fas fa-apple-alt"></i>
+                                        </div>
+                                        <div>AAPL</div>
+                                    </div>
+                                </td>
+                                <td>Buy</td>
+                                <td>$179.05</td>
+                                <td>10 AAPL</td>
+                                <td>$1,790.50</td>
+                                <td class="text-muted">-</td>
+                                <td>Long-term investment</td>
+                            </tr>
+                            <tr>
+                                <td>Mar 10, 2025</td>
+                                <td>
+                                    <div class="asset-info">
+                                        <div class="asset-icon">
+                                            <i class="fas fa-oil-can"></i>
+                                        </div>
+                                        <div>GLD</div>
+                                    </div>
+                                </td>
+                                <td>Sell</td>
+                                <td>$1,975.45</td>
+                                <td>1.5 GLD</td>
+                                <td>$2,963.18</td>
+                                <td class="text-error">-$45.60</td>
+                                <td>Rebalancing portfolio</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center mt-md">
+                        <button class="btn btn-outline">View All Trades</button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Portfolio Analysis -->
+            <section class="report-card">
+                <div class="report-header">
+                    <h2 class="report-title">Portfolio Analysis</h2>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-lg">
+                    <!-- Asset Allocation Chart -->
+                    <div class="report-chart-container">
+                        <h3 class="chart-title">Asset Allocation</h3>
+                        <div style="height: 300px; display: flex;">
+                            <div style="flex: 1;">
+                                <canvas id="allocation-chart"></canvas>
+                            </div>
+                            <div class="allocation-legend" style="width: 200px;">
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: #1E3A8A;"></div>
+                                    <div class="legend-label">Cryptocurrencies</div>
+                                    <div class="legend-percent">49.1%</div>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: #0D9488;"></div>
+                                    <div class="legend-label">Stocks</div>
+                                    <div class="legend-percent">44.0%</div>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: #F97316;"></div>
+                                    <div class="legend-label">Commodities</div>
+                                    <div class="legend-percent">6.9%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Performance by Asset Category -->
+                    <div class="report-chart-container">
+                        <h3 class="chart-title">Performance by Asset Category</h3>
+                        <div style="height: 300px;">
+                            <canvas id="performance-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Risk Metrics -->
+                <div class="mt-lg">
+                    <h3 class="chart-title">Risk Metrics</h3>
+                    <div class="grid grid-cols-4 gap-md">
+                        <div class="stat-card">
+                            <div class="stat-title">Sharpe Ratio</div>
+                            <div class="stat-value">1.32</div>
+                            <div class="stat-comparison">
+                                <span>Good risk-adjusted return</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-title">Volatility</div>
+                            <div class="stat-value">15.4%</div>
+                            <div class="stat-comparison">
+                                <span>Moderate volatility</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-title">Max Drawdown</div>
+                            <div class="stat-value">-8.2%</div>
+                            <div class="stat-comparison">
+                                <span>Feb 5 - Feb 15, 2025</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-title">Beta</div>
+                            <div class="stat-value">1.15</div>
+                            <div class="stat-comparison">
+                                <span>vs. S&P 500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Insights & Recommendations -->
+            <section class="report-card">
+                <div class="report-header">
+                    <h2 class="report-title">Insights & Recommendations</h2>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-md">
+                    <div class="alert alert-info">
+                        <h4 class="mb-sm">Portfolio Diversification</h4>
+                        <p>Your portfolio is relatively concentrated in cryptocurrencies (49.1%). Consider diversifying into more asset classes to reduce risk.</p>
+                        <div class="mt-sm">
+                            <button class="btn btn-sm btn-outline">View Recommendations</button>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success">
+                        <h4 class="mb-sm">Trading Patterns</h4>
+                        <p>Your most profitable trades occur during market dips. Continue to look for buying opportunities during market corrections.</p>
+                        <div class="mt-sm">
+                            <button class="btn btn-sm btn-outline">View Analysis</button>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-error">
+                        <h4 class="mb-sm">Risk Management</h4>
+                        <p>Your average losing trade (-$115) is larger than your average winning trade (+$85). Consider implementing tighter stop losses.</p>
+                        <div class="mt-sm">
+                            <button class="btn btn-sm btn-outline">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-footer">
+                    <div class="report-note">
+                        <i class="fas fa-info-circle"></i> These insights are generated based on your trading history and portfolio composition. They are not financial advice.
+                    </div>
+                    <div class="report-actions">
+                        <button class="btn btn-outline">Schedule Review with Advisor</button>
+                        <button class="btn btn-primary">Create Custom Report</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Equity Curve Chart
+            const equityCtx = document.getElementById('equity-chart').getContext('2d');
+            const equityChart = new Chart(equityCtx, {
+                type: 'line',
+                data: {
+                    labels: [...Array(30).keys()].map(i => {
+                        const date = new Date();
+                        date.setDate(date.getDate() - (30 - i - 1));
+                        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    }),
+                    datasets: [{
+                        label: 'Portfolio Value',
+                        data: [
+                            25400, 25600, 25300, 25450, 25700, 26100, 26300, 
+                            26150, 26400, 26750, 26900, 27050, 26800, 26900, 
+                            27200, 27400, 27350, 27100, 27250, 27500, 27300,
+                            27600, 27800, 28100, 27900, 28050, 28200, 28400, 
+                            28300, 28325
+                        ],
+                        borderColor: '#1E3A8A',
+                        backgroundColor: 'rgba(30, 58, 138, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return `$${context.raw.toLocaleString()}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                maxTicksLimit: 10
+                            }
+                        },
+                        y: {
+                            grid: {
+                                borderDash: [5, 5]
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Trade Volume Chart
+            const volumeCtx = document.getElementById('volume-chart').getContext('2d');
+            const volumeChart = new Chart(volumeCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                    datasets: [{
+                        label: 'Trade Volume ($)',
+                        data: [7450, 5200, 8900, 6400],
+                        backgroundColor: '#1E3A8A',
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `$${context.raw.toLocaleString()}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Buy/Sell Distribution Chart
+            const buysellCtx = document.getElementById('buysell-chart').getContext('2d');
+            const buysellChart = new Chart(buysellCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Buy', 'Sell'],
+                    datasets: [{
+                        data: [28, 14],
+                        backgroundColor: ['#10B981', '#EF4444'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((context.raw / total) * 100);
+                                    return `${context.label}: ${context.raw} trades (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Asset Allocation Chart
+            const allocationCtx = document.getElementById('allocation-chart').getContext('2d');
+            const allocationChart = new Chart(allocationCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Cryptocurrencies', 'Stocks', 'Commodities'],
+                    datasets: [{
+                        data: [49.1, 44.0, 6.9],
+                        backgroundColor: ['#1E3A8A', '#0D9488', '#F97316'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Performance by Asset Category Chart
+            const performanceCtx = document.getElementById('performance-chart').getContext('2d');
+            const performanceChart = new Chart(performanceCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Cryptocurrencies', 'Stocks', 'Commodities'],
+                    datasets: [{
+                        label: 'Performance (%)',
+                        data: [12.8, 6.4, -2.1],
+                        backgroundColor: [
+                            '#1E3A8A',
+                            '#0D9488',
+                            '#F97316'
+                        ],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `Performance: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Time period selector change event
+            document.getElementById('period-selector').addEventListener('change', function() {
+                // In a real app, this would fetch new data based on the selected time period
+                alert('In a real application, this would update all charts and statistics based on the selected time period: ' + this.value);
+            });
+        });
+    </script>
+</body>
+</html>

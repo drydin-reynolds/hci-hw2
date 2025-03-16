@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeX - Market News</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <div class="main-content">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-nav">
+                <div class="navbar-brand text-center mb-lg">TradeX</div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Main</div>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="dashboard.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="trade.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-exchange-alt"></i></span>
+                                Trade
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="portfolio.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-briefcase"></i></span>
+                                Portfolio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="news.html" class="nav-link active">
+                                <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                                Market News
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="reports.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-file-alt"></i></span>
+                                Reports
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Account</div>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-wallet"></i></span>
+                                Deposit/Withdraw
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-history"></i></span>
+                                Transaction History
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                                Settings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon help-btn">?</span>
+                                Help
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="user-avatar">JD</div>
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Premium Account</div>
+                </div>
+                <a href="index.html" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="content-area">
+            <header class="navbar">
+                <div>
+                    <h1 class="mb-0">Market News</h1>
+                    <p class="text-muted">Stay updated with the latest market insights</p>
+                </div>
+                <div class="flex gap-md items-center">
+                    <div class="text-right">
+                        <div class="text-primary">Market Status: <span class="text-success">Open</span></div>
+                        <div class="text-muted">Closes in 3h 45m</div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- News Filter & Search -->
+            <section class="card mb-lg">
+                <div class="p-md">
+                    <div class="flex justify-between items-center mb-md">
+                        <div class="tabs">
+                            <div class="tab active" data-category="all">All News</div>
+                            <div class="tab" data-category="company">Company</div>
+                            <div class="tab" data-category="market">Market Analysis</div>
+                            <div class="tab" data-category="economy">Economy</div>
+                            <div class="tab" data-category="global">Global</div>
+                            <div class="tab" data-category="saved"><i class="fas fa-bookmark"></i> Saved</div>
+                        </div>
+                        <div class="flex gap-md">
+                            <button class="btn btn-outline btn-sm">
+                                <i class="fas fa-filter"></i> Filter
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-md">
+                        <div class="form-group mb-0 w-full">
+                            <div class="flex items-center border rounded p-sm">
+                                <i class="fas fa-search text-muted"></i>
+                                <input type="text" placeholder="Search news, companies, or keywords..." class="form-input border-0">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Featured News -->
+            <section class="mb-lg">
+                <h2 class="mb-md">Featured News</h2>
+                <div class="grid grid-cols-2 gap-lg mb-lg">
+                    <div class="card p-0">
+                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=500&q=80" alt="Featured News" style="width: 100%; height: 300px; object-fit: cover;">
+                        <div class="p-lg">
+                            <div class="flex justify-between mb-sm">
+                                <div>
+                                    <span class="badge badge-primary">Crypto</span>
+                                    <span class="badge badge-primary">Bitcoin</span>
+                                </div>
+                                <span class="text-muted">2 hours ago</span>
+                            </div>
+                            <h3>Bitcoin Hits New Highs as Institutional Adoption Accelerates</h3>
+                            <p class="mb-md">The world's leading cryptocurrency surged past $37,000 as more financial institutions announce plans to add Bitcoin to their balance sheets and investment portfolios.</p>
+                            <div class="flex justify-between items-center">
+                                <div class="text-muted">By <span class="text-primary">Crypto Daily</span></div>
+                                <div class="flex gap-sm">
+                                    <button class="btn btn-sm btn-outline"><i class="far fa-bookmark"></i> Save</button>
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-share-alt"></i> Share</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-0">
+                        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=500&q=80" alt="Featured News" style="width: 100%; height: 300px; object-fit: cover;">
+                        <div class="p-lg">
+                            <div class="flex justify-between mb-sm">
+                                <div>
+                                    <span class="badge badge-primary">Economy</span>
+                                    <span class="badge badge-primary">Fed</span>
+                                </div>
+                                <span class="text-muted">4 hours ago</span>
+                            </div>
+                            <h3>Federal Reserve Signals Potential Rate Cut in Next Meeting</h3>
+                            <p class="mb-md">The Federal Reserve Chairman hinted at a possible interest rate cut in the upcoming Federal Open Market Committee meeting, citing improving inflation data and labor market concerns.</p>
+                            <div class="flex justify-between items-center">
+                                <div class="text-muted">By <span class="text-primary">Market Watch</span></div>
+                                <div class="flex gap-sm">
+                                    <button class="btn btn-sm btn-outline"><i class="far fa-bookmark"></i> Save</button>
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-share-alt"></i> Share</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Latest News -->
+            <section class="mb-lg">
+                <div class="flex justify-between items-center mb-md">
+                    <h2>Latest News</h2>
+                    <div class="form-group mb-0">
+                        <select class="form-select">
+                            <option>Latest First</option>
+                            <option>Oldest First</option>
+                            <option>Most Relevant</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="news-container">
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80" alt="Corporate News" class="news-image">
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-source">Business Insider</span>
+                                <span class="news-date">Yesterday</span>
+                            </div>
+                            <h4 class="news-title">Tesla Announces New Battery Technology with 500-Mile Range</h4>
+                            <p class="news-summary">The electric vehicle maker has unveiled a revolutionary battery technology that could significantly increase range and reduce costs.</p>
+                            <div class="news-footer">
+                                <div class="news-tags">
+                                    <span class="news-tag">TSLA</span>
+                                    <span class="news-tag">Tech</span>
+                                </div>
+                                <div class="news-actions">
+                                    <span class="news-action"><i class="far fa-bookmark"></i></span>
+                                    <span class="news-action"><i class="far fa-share-square"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1491336477066-31156b5e4f35?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80" alt="Tech News" class="news-image">
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-source">Tech Today</span>
+                                <span class="news-date">Yesterday</span>
+                            </div>
+                            <h4 class="news-title">Apple Plans to Launch Mixed Reality Headset in Q3</h4>
+                            <p class="news-summary">Sources close to Apple's supply chain indicate that the tech giant is preparing to launch its highly anticipated mixed reality headset in the third quarter.</p>
+                            <div class="news-footer">
+                                <div class="news-tags">
+                                    <span class="news-tag">AAPL</span>
+                                    <span class="news-tag">Tech</span>
+                                </div>
+                                <div class="news-actions">
+                                    <span class="news-action"><i class="far fa-bookmark"></i></span>
+                                    <span class="news-action"><i class="far fa-share-square"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1559589689-577aabd1db4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80" alt="Finance News" class="news-image">
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-source">Financial Times</span>
+                                <span class="news-date">2 days ago</span>
+                            </div>
+                            <h4 class="news-title">JPMorgan Acquires Fintech Startup for $2.5 Billion</h4>
+                            <p class="news-summary">The banking giant has announced the acquisition of a leading fintech startup specializing in payment processing and blockchain technology.</p>
+                            <div class="news-footer">
+                                <div class="news-tags">
+                                    <span class="news-tag">JPM</span>
+                                    <span class="news-tag">Fintech</span>
+                                </div>
+                                <div class="news-actions">
+                                    <span class="news-action"><i class="far fa-bookmark"></i></span>
+                                    <span class="news-action"><i class="far fa-share-square"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80" alt="Oil News" class="news-image">
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-source">Energy Report</span>
+                                <span class="news-date">2 days ago</span>
+                            </div>
+                            <h4 class="news-title">OPEC+ Agrees to Increase Oil Production Starting May</h4>
+                            <p class="news-summary">The oil cartel and its allies have reached an agreement to gradually increase production quotas over the next three months in response to growing demand.</p>
+                            <div class="news-footer">
+                                <div class="news-tags">
+                                    <span class="news-tag">Oil</span>
+                                    <span class="news-tag">Commodities</span>
+                                </div>
+                                <div class="news-actions">
+                                    <span class="news-action"><i class="far fa-bookmark"></i></span>
+                                    <span class="news-action"><i class="far fa-share-square"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1549421263-5ec394a5ad4c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80" alt="Real Estate News" class="news-image">
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-source">Property Weekly</span>
+                                <span class="news-date">3 days ago</span>
+                            </div>
+                            <h4 class="news-title">Commercial Real Estate Shows Signs of Recovery</h4>
+                            <p class="news-summary">After a challenging year, the commercial real estate sector is beginning to show signs of recovery with increasing occupancy rates and new developments.</p>
+                            <div class="news-footer">
+                                <div class="news-tags">
+                                    <span class="news-tag">Real Estate</span>
+                                    <span class="news-tag">Commercial</span>
+                                </div>
+                                <div class="news-actions">
+                                    <span class="news-action"><i class="far fa-bookmark"></i></span>
+                                    <span class="news-action"><i class="far fa-share-square"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1534951009808-766178b47a4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80" alt="Crypto News" class="news-image">
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-source">Crypto Insider</span>
+                                <span class="news-date">3 days ago</span>
+                            </div>
+                            <h4 class="news-title">Ethereum 2.0 Upgrade on Track for July Completion</h4>
+                            <p class="news-summary">The Ethereum Foundation has confirmed that the long-awaited upgrade to Ethereum 2.0 is on schedule for completion in July, promising improved scalability and reduced fees.</p>
+                            <div class="news-footer">
+                                <div class="news-tags">
+                                    <span class="news-tag">ETH</span>
+                                    <span class="news-tag">Crypto</span>
+                                </div>
+                                <div class="news-actions">
+                                    <span class="news-action"><i class="far fa-bookmark"></i></span>
+                                    <span class="news-action"><i class="far fa-share-square"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-lg">
+                    <button class="btn btn-outline">Load More News</button>
+                </div>
+            </section>
+            
+            <!-- Market Events Calendar -->
+            <section class="events-calendar">
+                <div class="calendar-header">
+                    <h2>Upcoming Market Events</h2>
+                    <div class="calendar-nav">
+                        <button class="btn btn-sm btn-outline"><i class="fas fa-chevron-left"></i></button>
+                        <div class="calendar-month">March 2025</div>
+                        <button class="btn btn-sm btn-outline"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                
+                <div class="calendar-grid">
+                    <div class="calendar-day-name">Sun</div>
+                    <div class="calendar-day-name">Mon</div>
+                    <div class="calendar-day-name">Tue</div>
+                    <div class="calendar-day-name">Wed</div>
+                    <div class="calendar-day-name">Thu</div>
+                    <div class="calendar-day-name">Fri</div>
+                    <div class="calendar-day-name">Sat</div>
+                    
+                    <!-- Week 1 -->
+                    <div class="calendar-day inactive">
+                        <div class="calendar-day-number">23</div>
+                    </div>
+                    <div class="calendar-day inactive">
+                        <div class="calendar-day-number">24</div>
+                    </div>
+                    <div class="calendar-day inactive">
+                        <div class="calendar-day-number">25</div>
+                    </div>
+                    <div class="calendar-day inactive">
+                        <div class="calendar-day-number">26</div>
+                    </div>
+                    <div class="calendar-day inactive">
+                        <div class="calendar-day-number">27</div>
+                    </div>
+                    <div class="calendar-day inactive">
+                        <div class="calendar-day-number">28</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">1</div>
+                    </div>
+                    
+                    <!-- Week 2 -->
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">2</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">3</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">4</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">5</div>
+                        <div class="calendar-events">
+                            <div class="calendar-event event-type-economic">Fed Minutes</div>
+                        </div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">6</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">7</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">8</div>
+                    </div>
+                    
+                    <!-- Week 3 -->
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">9</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">10</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">11</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">12</div>
+                        <div class="calendar-events">
+                            <div class="calendar-event event-type-earnings">AAPL Earnings</div>
+                        </div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">13</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">14</div>
+                        <div class="calendar-events">
+                            <div class="calendar-event event-type-economic">CPI Data</div>
+                        </div>
+                    </div>
+                    <div class="calendar-day today">
+                        <div class="calendar-day-number">15</div>
+                        <div class="calendar-events">
+                            <div class="calendar-event event-type-dividend">MSFT Ex-Div</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Week 4 -->
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">16</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">17</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">18</div>
+                        <div class="calendar-events">
+                            <div class="calendar-event event-type-earnings">NVDA Earnings</div>
+                        </div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">19</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">20</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">21</div>
+                        <div class="calendar-events">
+                            <div class="calendar-event event-type-economic">FOMC Meeting</div>
+                        </div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">22</div>
+                    </div>
+                    
+                    <!-- Week 5 -->
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">23</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">24</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">25</div>
+                        <div class="calendar-events">
+                            <div class="calendar-event event-type-earnings">TSLA Earnings</div>
+                        </div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">26</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">27</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">28</div>
+                        <div class="calendar-events">
+                            <div class="calendar-event event-type-economic">GDP Data</div>
+                        </div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">29</div>
+                    </div>
+                    
+                    <!-- Week 6 (partial) -->
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">30</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="calendar-day-number">31</div>
+                    </div>
+                    <div class="calendar-day inactive">
+                        <div class="calendar-day-number">1</div>
+                    </div>
+                    <div class="calendar-day inactive">
+                        <div class="calendar-day-number">2</div>
+                    </div>
+                    <div class="calendar-day inactive">
+                        <div class="calendar-day-number">3</div>
+                    </div>
+                    <div class="calendar-day inactive">
+                        <div class="calendar-day-number">4</div>
+                    </div>
+                    <div class="calendar-day inactive">
+                        <div class="calendar-day-number">5</div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-md">
+                    <div class="flex gap-md">
+                        <div class="flex items-center gap-xs">
+                            <div class="legend-color" style="background-color: rgba(16, 185, 129, 0.2); width: 12px; height: 12px; border-radius: 3px;"></div>
+                            <span>Earnings Reports</span>
+                        </div>
+                        <div class="flex items-center gap-xs">
+                            <div class="legend-color" style="background-color: rgba(30, 58, 138, 0.2); width: 12px; height: 12px; border-radius: 3px;"></div>
+                            <span>Economic Events</span>
+                        </div>
+                        <div class="flex items-center gap-xs">
+                            <div class="legend-color" style="background-color: rgba(249, 115, 22, 0.2); width: 12px; height: 12px; border-radius: 3px;"></div>
+                            <span>Dividends</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-sm btn-outline">View Full Calendar</a>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <!-- Full Article Modal -->
+    <div class="modal-overlay" id="article-modal" style="display: none;">
+        <div class="modal" style="max-width: 800px;">
+            <div class="modal-header">
+                <h3 class="modal-title">Bitcoin Hits New Highs as Institutional Adoption Accelerates</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-md">
+                    <span class="badge badge-primary">Crypto</span>
+                    <span class="badge badge-primary">Bitcoin</span>
+                    <span class="text-muted ml-md">By Crypto Daily • 2 hours ago</span>
+                </div>
+                
+                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=500&q=80" alt="Featured News" style="width: 100%; height: 300px; object-fit: cover;" class="mb-md">
+                
+                <p>The world's leading cryptocurrency surged past $37,000 as more financial institutions announce plans to add Bitcoin to their balance sheets and investment portfolios.</p>
+                
+                <p>According to market data, Bitcoin has seen a surge of over 15% in the past week alone, reaching a peak of $37,452 before slightly retracing. This remarkable growth comes as several major institutions have announced significant investments in the cryptocurrency.</p>
+                
+                <p>MicroStrategy, which has been at the forefront of corporate Bitcoin adoption, announced an additional purchase of 5,000 BTC, bringing their total holdings to over 135,000 coins. CEO Michael Saylor reaffirmed his belief in Bitcoin as a long-term store of value and an inflation hedge.</p>
+                
+                <p>Additionally, multiple pension funds have begun allocating a small percentage of their portfolios to Bitcoin, signaling growing acceptance of the asset class among traditionally conservative institutional investors.</p>
+                
+                <p>Market analysts suggest that this institutional adoption trend is likely to continue as regulatory clarity improves and financial infrastructure for cryptocurrency custody and trading matures.</p>
+                
+                <p>"We're witnessing a paradigm shift in how institutional investors view Bitcoin," said Sarah Chen, Chief Analyst at Crypto Market Research. "What was once seen as a speculative asset is increasingly being accepted as a legitimate part of a diversified portfolio and a hedge against inflation."</p>
+                
+                <p>The surge in Bitcoin's price has also positively impacted the broader cryptocurrency market, with Ethereum and other major altcoins also posting significant gains.</p>
+                
+                <div class="mt-lg pt-md border-top">
+                    <div class="flex justify-between">
+                        <div class="flex gap-sm">
+                            <button class="btn btn-outline"><i class="far fa
